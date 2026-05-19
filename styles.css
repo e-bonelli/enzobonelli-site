@@ -479,6 +479,11 @@ img, svg {
   line-height: 1.6;
 }
 
+.section-sub strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .section-header-center .section-sub {
   margin-left: auto;
   margin-right: auto;
