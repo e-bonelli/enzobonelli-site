@@ -32,7 +32,7 @@
       try { var s = localStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
       document.documentElement.dataset.theme = t;
       var m = document.querySelector('meta[name="theme-color"]');
-      if (m) m.setAttribute('content', t === 'light' ? '#e8f3ff' : '#0a1630');
+      if (m) m.setAttribute('content', t === 'light' ? '#0a0d14' : '#0a1630');
     })();
   </script>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -41,9 +41,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261111g" />
-  <link rel="stylesheet" href="fx.css?v=20261111g" />
-  <link rel="stylesheet" href="hero.css?v=20261111g" />
+  <link rel="stylesheet" href="styles.css?v=20261112b" />
+  <link rel="stylesheet" href="fx.css?v=20261112b" />
+  <link rel="stylesheet" href="hero.css?v=20261112b" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,9 +87,9 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to starfield theme" title="Switch to starfield theme" aria-pressed="false">
+          <svg class="icon-stars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.5l1.6 4.4 4.4 1.6-4.4 1.6L10 15.5l-1.6-4.4L4 9.5l4.4-1.6Z"/><path d="M18 14v5M15.5 16.5h5"/><path d="M18.5 3.5v2M17.5 4.5h2"/></svg>
+          <svg class="icon-firefly" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle class="ff-glow" cx="12" cy="13" r="8"/><circle class="ff-core" cx="12" cy="13" r="3.2"/><path d="M5 5.5l1.2 1.2M19 5.5l-1.2 1.2M12 2.5v1.8"/></svg>
         </button>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -1747,9 +1747,9 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20261111g"></script>
-  <script src="fireflies.js?v=20261111g"></script>
-  <script src="fx.js?v=20261111g"></script>
-  <script src="hero.js?v=20261111g"></script>
+  <script src="script.js?v=20261112b"></script>
+  <script src="fireflies.js?v=20261112b"></script>
+  <script src="fx.js?v=20261112b"></script>
+  <script src="hero.js?v=20261112b"></script>
 </body>
 </html>

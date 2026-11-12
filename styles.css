@@ -3,7 +3,8 @@
    ============================================================ */
 
 /* ---- Theme tokens ------------------------------------------------
-   Night (default) = deep navy + firefly lime/gold.  Day = light blue sky.
+   Night (default) = deep navy + firefly lime/gold.  Alternate ("starfield",
+   data-theme="light") = near-black blue + violet/cyan aurora.
    data-theme on <html> is set before first paint by an inline script in
    <head>; script.js owns the toggle. Other modules read these tokens. */
 :root,
@@ -56,43 +57,47 @@
 }
 
 :root[data-theme="light"] {
-  color-scheme: light;
-  --bg: #e8f3ff;
-  --bg-deep: #d7e9fd;
-  --bg-surface: #ffffff;
-  --bg-elevated: #f4f9ff;
-  --bg-card: #f7fbff;
-  --border: rgba(13, 27, 51, 0.10);
-  --border-strong: rgba(13, 27, 51, 0.18);
-  --text: #0d1b33;
-  --text-bright: #071226;
-  --text-muted: #3d4f70;
-  --text-dim: #5b6c8c;
-  --accent: #2f6fd6;
-  --accent-2: #b8860b;
-  --accent-3: #0e7490;
-  --accent-warm: #b8860b;
-  --accent-soft: rgba(47, 111, 214, 0.10);
-  --accent-hover: #1f56b0;
-  --on-accent: #ffffff;
-  --success: #15803d;
-  --tint: #0d1b33;
-  --gradient: linear-gradient(135deg, #2f6fd6 0%, #b8860b 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(47, 111, 214, 0.12), rgba(184, 134, 11, 0.12));
-  --shadow-lg: 0 30px 60px -24px rgba(13, 27, 51, 0.22), 0 0 0 1px rgba(13, 27, 51, 0.05);
-  --shadow-glow: 0 0 60px -10px rgba(47, 111, 214, 0.25);
-  --shadow-card: 0 1px 2px rgba(13, 27, 51, 0.04), 0 8px 24px -16px rgba(13, 27, 51, 0.18);
-  --body-weight: 450;
-  --k-claude: #c2410c;
-  --k-multi: #6d28d9;
-  --k-rag: #0e7490;
-  --k-chat: #be185d;
-  --k-cloud: #64748b;
-  --sky-1: rgba(255, 255, 255, 0.85);
-  --sky-2: rgba(255, 214, 120, 0.30);
-  --sky-3: rgba(120, 180, 255, 0.30);
-  --sky-base: linear-gradient(180deg, #d4e8ff 0%, #e8f3ff 40%, #f2f8ff 100%);
-  --grid-line: rgba(13, 27, 51, 0.035);
+  /* "Starfield" — a second night look: near-black blue, violet + cyan
+     aurora, constellation feel. (Attribute value stays 'light' for
+     compatibility with saved prefs and other scripts.) */
+  color-scheme: dark;
+  --bg: #0a0d14;
+  --bg-deep: #06080d;
+  --bg-surface: #121827;
+  --bg-elevated: #161d2e;
+  --bg-card: #111726;
+  --border: rgba(148, 163, 196, 0.16);
+  --border-strong: rgba(148, 163, 196, 0.30);
+  --text: #e8ecf4;
+  --text-bright: #ffffff;
+  --text-muted: #98a2b8;
+  --text-dim: #7c86a0;
+  --accent: #8b7bff;
+  --accent-2: #22d3ee;
+  --accent-3: #f0abfc;
+  --accent-warm: #22d3ee;
+  --accent-soft: rgba(139, 123, 255, 0.14);
+  --accent-hover: #a99cff;
+  --on-accent: #0a0d14;
+  --success: #34d399;
+  --tint: #ffffff;
+  --gradient: linear-gradient(120deg, #8b7bff 0%, #22d3ee 100%);
+  --gradient-soft: linear-gradient(120deg, rgba(139, 123, 255, 0.16), rgba(34, 211, 238, 0.16));
+  --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(148, 163, 196, 0.05);
+  --shadow-glow: 0 0 60px -12px rgba(139, 123, 255, 0.35);
+  --shadow-card: none;
+  --body-weight: 400;
+  --k-claude: #fb923c;
+  --k-multi: #a99cff;
+  --k-rag: #22d3ee;
+  --k-chat: #f0abfc;
+  --k-cloud: #98a2b8;
+  /* aurora: violet + cyan, low opacity */
+  --sky-1: rgba(139, 123, 255, 0.16);
+  --sky-2: rgba(34, 211, 238, 0.10);
+  --sky-3: rgba(76, 58, 180, 0.16);
+  --sky-base: linear-gradient(180deg, #080b12 0%, #0a0d14 45%, #070910 100%);
+  --grid-line: rgba(148, 163, 196, 0.025);
 }
 
 * {
@@ -161,7 +166,7 @@ img, svg {
    ============================================================ */
 
 /* Ambient sky: two slow-drifting blurred clouds over a base wash.
-   Night = firefly lime + gold over navy-blue haze; day = soft sky + sun. */
+   Night = firefly lime + gold over navy-blue haze; starfield = violet + cyan aurora. */
 .bg-gradient {
   position: fixed;
   inset: 0;
@@ -203,15 +208,14 @@ img, svg {
   animation: sky-drift-b 21s ease-in-out infinite alternate;
 }
 
-/* Day: a faint sun glow upper-right, clouds become pale haze. */
-:root[data-theme="light"] .bg-gradient::after {
-  top: -14vmax;
-  bottom: auto;
-  right: -10vmax;
-  width: 48vmax;
-  height: 48vmax;
+/* Starfield: a faint "observatory" ring + ray pattern near the top-right,
+   layered over the base wash (rings, then rays, then the gradient). */
+:root[data-theme="light"] .bg-gradient {
   background:
-    radial-gradient(closest-side, rgba(255, 236, 170, 0.55), rgba(255, 214, 120, 0.18) 45%, transparent 72%);
+    radial-gradient(circle at 88% 4%, transparent 0, transparent 22vmax, var(--bg) 40vmax),
+    repeating-radial-gradient(circle at 88% 4%, transparent 0 52px, rgba(148, 163, 196, 0.04) 52px 53px),
+    repeating-conic-gradient(from 6deg at 88% 4%, rgba(139, 123, 255, 0.03) 0 0.5deg, transparent 0.5deg 12deg),
+    var(--sky-base);
 }
 
 @keyframes sky-drift-a {
@@ -2848,31 +2852,24 @@ img, svg {
 }
 
 /* ============================================================
-   DAY THEME refinements
+   STARFIELD THEME refinements (data-theme="light")
    ============================================================ */
 
-:root[data-theme="light"] .project-card,
-:root[data-theme="light"] .timeline-card,
-:root[data-theme="light"] .edu-card,
-:root[data-theme="light"] .cred-card,
-:root[data-theme="light"] .contact-card,
-:root[data-theme="light"] .pillar,
-:root[data-theme="light"] .now-card,
-:root[data-theme="light"] .next-card,
-:root[data-theme="light"] .stat {
-  box-shadow: var(--shadow-card);
-}
-
 :root[data-theme="light"] .project-card.is-featured {
-  box-shadow: var(--shadow-card), var(--shadow-glow);
+  box-shadow: var(--shadow-glow);
 }
 
 :root[data-theme="light"] .arch {
-  background: color-mix(in srgb, var(--bg-deep) 45%, var(--bg-surface));
+  background: color-mix(in srgb, var(--bg-deep) 55%, var(--bg-surface));
 }
 
 :root[data-theme="light"] .arch-node.is-ai {
-  box-shadow: 0 0 24px -14px color-mix(in srgb, var(--accent-2) 70%, transparent);
+  box-shadow: 0 0 28px -12px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+/* Starfield: violet starlight on the gradient wordmark. */
+:root[data-theme="light"] .hero-title-accent {
+  filter: drop-shadow(0 0 28px rgba(139, 123, 255, 0.22));
 }
 
 /* Night: a touch of firefly glow on the gradient wordmark. */
@@ -2920,14 +2917,11 @@ img, svg {
   transition: transform 0.5s var(--ease), opacity 0.3s var(--ease);
 }
 
-/* Night shows the sun (action: go to day); day shows the moon. */
-.theme-toggle .icon-moon { transform: translateY(140%) rotate(-40deg); opacity: 0; }
-.theme-toggle .icon-sun  { transform: none; opacity: 1; }
-:root[data-theme="light"] .theme-toggle .icon-sun  { transform: translateY(-140%) rotate(40deg); opacity: 0; }
-:root[data-theme="light"] .theme-toggle .icon-moon { transform: none; opacity: 1; }
+/* Firefly night shows stars (action: go to starfield); starfield shows a firefly. */
+.theme-toggle .icon-firefly { transform: translateY(140%) rotate(-40deg); opacity: 0; }
+.theme-toggle .icon-stars   { transform: none; opacity: 1; }
+:root[data-theme="light"] .theme-toggle .icon-stars   { transform: translateY(-140%) rotate(40deg); opacity: 0; }
+:root[data-theme="light"] .theme-toggle .icon-firefly { transform: none; opacity: 1; }
+.theme-toggle .icon-firefly .ff-glow { fill: currentColor; opacity: 0.28; stroke: none; }
+.theme-toggle .icon-firefly .ff-core { fill: currentColor; stroke: none; }
 
-/* Day: deepen gold where it's used as an icon colour (3:1 non-text contrast). */
-:root[data-theme="light"] .cred-card-award .cred-icon,
-:root[data-theme="light"] .theme-toggle:hover {
-  color: color-mix(in srgb, var(--accent-2) 75%, var(--text-bright));
-}

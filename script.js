@@ -37,12 +37,13 @@
   const themeBtn = $('#theme-toggle');
   const themeMeta = $('meta[name="theme-color"]');
   const syncThemeUI = (theme) => {
-    if (themeMeta) themeMeta.setAttribute('content', theme === 'light' ? '#e8f3ff' : '#0a1630');
+    if (themeMeta) themeMeta.setAttribute('content', theme === 'light' ? '#0a0d14' : '#0a1630');
     if (!themeBtn) return;
-    const next = theme === 'light' ? 'dark' : 'light';
-    themeBtn.setAttribute('aria-label', `Switch to ${next} theme`);
+    // 'dark' = firefly night, 'light' = starfield (name kept for compat).
+    const label = theme === 'light' ? 'Switch to firefly theme' : 'Switch to starfield theme';
+    themeBtn.setAttribute('aria-label', label);
     themeBtn.setAttribute('aria-pressed', String(theme === 'light'));
-    themeBtn.title = `Switch to ${next} theme`;
+    themeBtn.title = label;
   };
   const setTheme = (theme) => {
     root.dataset.theme = theme;
