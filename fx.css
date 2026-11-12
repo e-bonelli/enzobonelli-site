@@ -1,0 +1,238 @@
+/* ============================================================
+   fx.css — interface effects layered on top of styles.css
+   (cursor spotlight, featured-card beam, heading decode,
+   architecture data packets). Colours come from the theme
+   tokens, so dark/light switch automatically.
+   ============================================================ */
+
+@property --fx-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* ---------- 1. Cursor spotlight on cards ----------------------
+   JS adds .fx-spot to each card (hover-capable devices only) and
+   writes --mx / --my. One ::after paints both the interior glow
+   (masked to ~12%) and a 1px lit ring on the border (full alpha),
+   sitting behind the card's content via isolation + z-index:-1. */
+.fx-spot {
+  isolation: isolate;
+}
+
+.fx-spot.fx-rel {
+  position: relative;
+}
+
+.fx-spot::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  pointer-events: none;
+  background: radial-gradient(
+    circle var(--fx-r, 300px) at var(--mx, 50%) var(--my, 50%),
+    var(--accent) 0%,
+    color-mix(in srgb, var(--accent) 45%, transparent) 30%,
+    transparent 72%
+  ) border-box;
+  /* top: interior wash (12%), then ring = border-box minus padding-box */
+  -webkit-mask:
+    linear-gradient(rgb(0 0 0 / 0.12) 0 0) border-box,
+    linear-gradient(#000 0 0) padding-box,
+    linear-gradient(#000 0 0) border-box;
+  -webkit-mask-composite: source-over, xor;
+  mask:
+    linear-gradient(rgb(0 0 0 / 0.12) 0 0) border-box,
+    linear-gradient(#000 0 0) padding-box,
+    linear-gradient(#000 0 0) border-box;
+  mask-composite: add, exclude;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease, ease);
+}
+
+.fx-spot:hover::after,
+.fx-spot.fx-on::after {
+  opacity: 1;
+}
+
+/* The stats row has no card chrome, so no ring there — glow only. */
+.stats-row .stat.fx-spot::after {
+  --fx-r: 220px;
+  -webkit-mask: linear-gradient(rgb(0 0 0 / 0.14) 0 0);
+  mask: linear-gradient(rgb(0 0 0 / 0.14) 0 0);
+  border-radius: var(--radius, 14px);
+}
+
+/* ---------- 2. Orbiting beam on the featured project ---------- */
+.project-card.is-featured {
+  position: relative;
+  isolation: isolate;
+  box-shadow:
+    var(--shadow-glow),
+    0 0 48px -14px color-mix(in srgb, var(--accent) 45%, transparent),
+    0 0 90px -40px color-mix(in srgb, var(--accent-2) 40%, transparent);
+}
+
+.project-card.is-featured::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--fx-angle),
+    transparent 0deg,
+    transparent 230deg,
+    color-mix(in srgb, var(--accent) 35%, transparent) 280deg,
+    var(--accent) 325deg,
+    var(--accent-2) 350deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  animation: fx-orbit 6s linear infinite;
+}
+
+@keyframes fx-orbit {
+  to { --fx-angle: 360deg; }
+}
+
+/* No @property → an unregistered custom property would jump in steps;
+   keep a static, still-pretty beam instead. */
+.fx-noprop .project-card.is-featured::before {
+  animation: none;
+  --fx-angle: 300deg;
+}
+
+/* ---------- 3. Heading decode -------------------------------- */
+.fx-ch {
+  position: relative;
+}
+
+.fx-ch.is-scr {
+  visibility: hidden;
+}
+
+.fx-ch.is-scr::after {
+  content: attr(data-g);
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--accent);
+  -webkit-text-fill-color: var(--accent);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--accent) 55%, transparent);
+  pointer-events: none;
+}
+
+/* ---------- 4. Data packets on architecture arrows ----------- */
+.fx-packet {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  right: 10px;
+  height: 0;
+  pointer-events: none;
+  animation: fx-packet-x 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+.fx-packet::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-2) 70%, #fff);
+  box-shadow:
+    0 0 6px 1px var(--accent-2),
+    0 0 14px 2px color-mix(in srgb, var(--accent-2) 55%, transparent);
+  animation: fx-packet-fade 1.8s linear infinite;
+  animation-delay: inherit;
+  animation-direction: normal;
+}
+
+.fx-packet:nth-of-type(2) { animation-delay: -0.9s; }
+.fx-packet:nth-of-type(2)::before { animation-delay: -0.9s; }
+
+/* both-way arrows: second packet travels backwards */
+.arch-arrow.is-both > .fx-packet:nth-of-type(2) {
+  animation-direction: reverse;
+}
+
+.arch-arrow.is-both > .fx-packet::before {
+  background: color-mix(in srgb, var(--accent) 60%, #fff);
+  box-shadow:
+    0 0 6px 1px var(--accent),
+    0 0 14px 2px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.arch-arrow.is-both > .fx-packet {
+  left: 10px;
+}
+
+@keyframes fx-packet-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+
+@keyframes fx-packet-y {
+  from { transform: translateY(0); }
+  to   { transform: translateY(100%); }
+}
+
+@keyframes fx-packet-fade {
+  0%   { opacity: 0; transform: scale(0.6); }
+  15%  { opacity: 1; transform: scale(1); }
+  80%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* Vertical stacked diagrams (matches the 1080px switch in styles.css) */
+@media (max-width: 1080px) {
+  .fx-packet,
+  .arch-arrow.is-both > .fx-packet {
+    top: 4px;
+    bottom: 10px;
+    left: 50%;
+    right: auto;
+    width: 0;
+    height: auto;
+    animation-name: fx-packet-y;
+  }
+  .arch-arrow.is-both > .fx-packet {
+    top: 10px;
+  }
+}
+
+/* ---------- Reduced motion ----------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .fx-spot::after {
+    transition: none;
+  }
+  .project-card.is-featured::before {
+    animation: none !important;
+    --fx-angle: 300deg;
+  }
+  .fx-packet {
+    display: none !important;
+  }
+  .fx-ch.is-scr { visibility: visible; }
+  .fx-ch.is-scr::after { content: none; }
+}

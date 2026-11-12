@@ -1,0 +1,15 @@
+{
+  "name": "Enzo Bonelli — Director of AI Engineering",
+  "short_name": "Enzo Bonelli",
+  "description": "Enzo Bonelli, Director of AI Engineering: voice AI, agentic and multi-agent systems, RAG/GraphRAG, air-gapped LLMs.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "theme_color": "#0a1630",
+  "background_color": "#0a1630",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

@@ -6,85 +6,287 @@
   <title>Enzo Bonelli — Director of AI Engineering</title>
   <meta name="description" content="Enzo Bonelli — Director of AI Engineering at Sears Home Services. Applied AI, agentic systems, voice AI, and secure LLM deployment across federal and commercial environments." />
   <meta name="author" content="Enzo Bonelli" />
-  <meta property="og:title" content="Enzo Bonelli — Director of AI Engineering" />
-  <meta property="og:description" content="Applied AI leader. Director of AI Engineering at Sears Home Services. Federal + commercial. DoD AI hackathon winner." />
+  <link rel="canonical" href="https://enzobonelli.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://enzobonelli.com" />
-  <meta name="theme-color" content="#0a0e1a" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0e1a'/%3E%3Ctext x='50' y='68' font-family='Inter,sans-serif' font-size='52' font-weight='700' text-anchor='middle' fill='%2300d4ff'%3EE%3C/text%3E%3C/svg%3E" />
+  <meta property="og:site_name" content="Enzo Bonelli" />
+  <meta property="og:url" content="https://enzobonelli.com/" />
+  <meta property="og:title" content="Enzo Bonelli — Director of AI Engineering" />
+  <meta property="og:description" content="Voice AI, agentic and multi-agent systems, RAG/GraphRAG, and air-gapped LLMs. San Antonio, TX." />
+  <meta property="og:image" content="https://enzobonelli.com/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Enzo Bonelli, Director of AI Engineering. Voice AI, agentic systems, GraphRAG, air-gapped LLMs, on a night sky of linked fireflies" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Enzo Bonelli — Director of AI Engineering" />
+  <meta name="twitter:description" content="Voice AI, agentic and multi-agent systems, RAG/GraphRAG, and air-gapped LLMs. San Antonio, TX." />
+  <meta name="twitter:image" content="https://enzobonelli.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Enzo Bonelli, Director of AI Engineering. Voice AI, agentic systems, GraphRAG, air-gapped LLMs, on a night sky of linked fireflies" />
+  <meta name="theme-color" content="#0a1630" />
+  <script>
+    /* Set theme before first paint. Night is the brand default; a saved
+       choice ('eb-theme') wins. script.js owns the toggle. */
+    (function () {
+      var t = 'dark';
+      try { var s = localStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
+      document.documentElement.dataset.theme = t;
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', t === 'light' ? '#e8f3ff' : '#0a1630');
+    })();
+  </script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261111g" />
+  <link rel="stylesheet" href="fx.css?v=20261111g" />
+  <link rel="stylesheet" href="hero.css?v=20261111g" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Enzo Bonelli",
+    "jobTitle": "Director of AI Engineering",
+    "url": "https://enzobonelli.com/",
+    "image": "https://enzobonelli.com/og-image.png",
+    "address": { "@type": "PostalAddress", "addressLocality": "San Antonio", "addressRegion": "TX", "addressCountry": "US" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "George Washington University" },
+      { "@type": "CollegeOrUniversity", "name": "Stevens Institute of Technology" },
+      { "@type": "CollegeOrUniversity", "name": "University of Texas at San Antonio" },
+      { "@type": "CollegeOrUniversity", "name": "Rider University" },
+      { "@type": "CollegeOrUniversity", "name": "Massachusetts Institute of Technology" }
+    ],
+    "sameAs": ["https://www.linkedin.com/in/enzobonelli/"],
+    "knowsAbout": ["Voice AI", "Agentic AI systems", "Multi-agent systems", "Retrieval-augmented generation", "GraphRAG", "Air-gapped large language models"]
+  }
+  </script>
 </head>
-<body>
+<body id="top">
   <div class="bg-gradient" aria-hidden="true"></div>
   <div class="bg-grid" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-mark">EB</span>
-        <span class="nav-logo-text">Enzo Bonelli</span>
+      <a href="#top" class="nav-logo">
+        <span class="nav-logo-mark"><span>EB</span></span>
+        <span class="nav-logo-text-wrap">
+          <span class="nav-logo-text">Enzo Bonelli</span>
+          <span class="nav-logo-text-sub">Director · AI Engineering</span>
+        </span>
       </a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="education.html">Education</a></li>
-        <li><a href="credentials.html">Credentials</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="container hero-container">
-      <div class="hero-eyebrow">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>TS/SCI Cleared · San Antonio, TX</span>
-      </div>
-      <h1 class="hero-title">
-        <span>Enzo</span> <span class="hero-title-accent">Bonelli</span>
-      </h1>
-      <p class="hero-subtitle">Director of AI Engineering · Sears Home Services</p>
-      <p class="hero-description">
-        I'm a hands-on AI engineering leader focused on <strong>applied AI</strong> — translating
-        research-grade models into production systems that ship and scale.
-        Federal and commercial. Voice AI, agentic systems, and GraphRAG.
-        Air-gapped enclaves to enterprise. <strong>DoD AI hackathon winner.</strong>
-      </p>
-      <div class="hero-cta">
-        <a href="experience.html" class="btn btn-primary">
-          <span>View Experience</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="contact.html" class="btn btn-ghost">Get in touch</a>
-      </div>
 
-      <div class="hero-contact">
-        <a class="hero-contact-item" href="mailto:enzopbonelli@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 5L2 7"/></svg>
-          <span>enzopbonelli@gmail.com</span>
-        </a>
-        <a class="hero-contact-item" href="tel:+12107652968">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-          <span>(210) 765-2968</span>
-        </a>
-        <span class="hero-contact-item hero-contact-item-static">
+      <!-- System bar — live status -->
+      <div class="system-bar" aria-label="Status">
+        <span class="system-bar-item">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Shipping voice AI in production</span>
+        </span>
+        <span class="system-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span id="local-time">—</span>
+        </span>
+        <span class="system-bar-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>San Antonio, TX</span>
         </span>
+        <span class="system-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          <strong>TS/SCI</strong>
+        </span>
       </div>
+
+      <div class="hero-grid">
+      <div class="hero-copy">
+
+      <span class="hero-eyebrow">Director of AI Engineering · Sears Home Services</span>
+
+      <h1 class="hero-title">
+        <span>Enzo</span> <span class="hero-title-accent">Bonelli</span>
+      </h1>
+
+      <!-- Role rotator — roles live in data-roles ("|" separated); hero.js types them -->
+      <p class="hero-role" data-roles="Director of AI Engineering|Voice AI architect|GraphRAG builder|multi-agent systems engineer|air-gapped LLM specialist">
+        <span class="hero-sr" aria-live="polite" aria-atomic="true">I'm a Director of AI Engineering</span>
+        <span class="hero-role-visual" aria-hidden="true">
+          <span class="hero-role-prefix">I'm <span class="hero-role-article">a</span></span>
+          <span class="hero-role-slot">
+            <span class="hero-role-ghost">Director of AI Engineering</span>
+            <span class="hero-role-typed"><span class="hero-role-text">Director of AI Engineering</span><span class="hero-role-caret"></span></span>
+          </span>
+        </span>
+      </p>
+
+      <p class="hero-subtitle">
+        Hands-on applied AI leader translating production systems
+        across federal and commercial environments.
+      </p>
+
+      <p class="hero-description">
+        Voice AI, agentic architectures, RAG and GraphRAG. Air-gapped enclaves to
+        enterprise. I take models out of notebooks and put them into production —
+        with the lineage tracking, observability, and auditability that real
+        systems demand. <strong>DoD AI hackathon winner.</strong>
+      </p>
+
+      <div class="hero-cta">
+        <a href="#experience" class="btn btn-primary">
+          <span>View Experience</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <a href="https://www.linkedin.com/in/enzobonelli/" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+
+      </div><!-- /.hero-copy -->
+
+      <!-- Agentic architecture diagram (hero.css / hero.js animate it) -->
+      <div class="hero-visual">
+        <div class="hero-live">
+          <span class="hero-live-dot" aria-hidden="true"></span>
+          <span class="hero-live-tag">live</span>
+          <span class="hero-live-text">voice AI in production</span>
+        </div>
+        <svg class="hx" viewBox="0 0 680 560" role="img" aria-labelledby="hx-title hx-desc">
+          <title id="hx-title">Agentic AI architecture</title>
+          <desc id="hx-desc">An LLM agent orchestrator at the centre, cycling through listen, reason, act and verify, connected to six capabilities: Voice AI (Twilio, Whisper, text-to-speech), GraphRAG (Neo4j, retrieval-augmented generation), multi-agent systems (CrewAI, Claude agents), human-in-the-loop approvals with an audit trail, air-gapped deployments (local LLMs, IL4+), and serverless AWS (Bedrock, Lambda).</desc>
+          <defs>
+            <radialGradient id="hx-grad-link" gradientUnits="userSpaceOnUse" cx="340" cy="280" r="190">
+              <stop class="hx-stop-a" offset="0.2"/>
+              <stop class="hx-stop-b" offset="1"/>
+            </radialGradient>
+            <linearGradient id="hx-grad-ring" x1="0" y1="0" x2="1" y2="1">
+              <stop class="hx-stop-a" offset="0"/>
+              <stop class="hx-stop-b" offset="1"/>
+            </linearGradient>
+            <radialGradient id="hx-grad-core" cx="0.5" cy="0.5" r="0.5">
+              <stop class="hx-stop-core-0" offset="0"/>
+              <stop class="hx-stop-core-1" offset="0.55"/>
+              <stop class="hx-stop-core-2" offset="1"/>
+            </radialGradient>
+            <filter id="hx-glow" x="-200%" y="-200%" width="500%" height="500%">
+              <feGaussianBlur stdDeviation="3.2" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <path id="hx-ring-path" d="M340 156 a124 124 0 1 1 0 248 a124 124 0 1 1 0 -248"/>
+          </defs>
+
+          <!-- links: faint base (draws in once) + flowing dashes -->
+          <g class="hx-links" fill="none">
+          <path class="hx-link" id="hx-link-0" style="--i:0" pathLength="100" d="M340 228 Q362 170.5 340 113"/>
+          <path class="hx-link" id="hx-link-1" style="--i:1" pathLength="100" d="M385 254 Q445.8 244.3 484.6 196.5"/>
+          <path class="hx-link" id="hx-link-2" style="--i:2" pathLength="100" d="M385 306 Q423.8 353.8 484.6 363.5"/>
+          <path class="hx-link" id="hx-link-3" style="--i:3" pathLength="100" d="M340 332 Q318 389.5 340 447"/>
+          <path class="hx-link" id="hx-link-4" style="--i:4" pathLength="100" d="M295 306 Q234.2 315.7 195.4 363.5"/>
+          <path class="hx-link" id="hx-link-5" style="--i:5" pathLength="100" d="M295 254 Q256.2 206.2 195.4 196.5"/>
+          </g>
+          <g class="hx-flows" fill="none" aria-hidden="true">
+          <path class="hx-flow" style="--i:0" pathLength="100" d="M340 228 Q362 170.5 340 113"/>
+          <path class="hx-flow" style="--i:1" pathLength="100" d="M385 254 Q445.8 244.3 484.6 196.5"/>
+          <path class="hx-flow" style="--i:2" pathLength="100" d="M385 306 Q423.8 353.8 484.6 363.5"/>
+          <path class="hx-flow" style="--i:3" pathLength="100" d="M340 332 Q318 389.5 340 447"/>
+          <path class="hx-flow" style="--i:4" pathLength="100" d="M295 306 Q234.2 315.7 195.4 363.5"/>
+          <path class="hx-flow" style="--i:5" pathLength="100" d="M295 254 Q256.2 206.2 195.4 196.5"/>
+          </g>
+
+          <!-- orbit ring: slowly rotates, loop text on its path -->
+          <g class="hx-orbit" aria-hidden="true">
+            <circle class="hx-orbit-ring" cx="340" cy="280" r="108" fill="none"/>
+            <circle class="hx-orbit-ring hx-orbit-ring--outer" cx="340" cy="280" r="140" fill="none"/>
+            <text class="hx-orbit-text" textLength="772" lengthAdjust="spacing"><textPath href="#hx-ring-path">LISTEN → REASON → ACT → VERIFY → LISTEN → REASON → ACT → VERIFY → </textPath></text>
+            <circle class="hx-orbit-bead" cx="340" cy="140" r="3.5"/>
+          </g>
+
+          <!-- light pulses (hero.js) -->
+          <g class="hx-pulses" filter="url(#hx-glow)" aria-hidden="true"></g>
+
+          <!-- core -->
+          <g class="hx-core">
+            <circle class="hx-core-halo" cx="340" cy="280" r="74"/>
+            <circle class="hx-core-glow" cx="340" cy="280" r="58"/>
+            <circle class="hx-core-body" cx="340" cy="280" r="48"/>
+            <text class="hx-core-label" x="340" y="279" text-anchor="middle">LLM agent</text>
+            <text class="hx-core-sub" x="340" y="297" text-anchor="middle">ORCHESTRATOR</text>
+          </g>
+
+          <!-- capability nodes -->
+          <g class="hx-nodes">
+          <g class="hx-node hx-node--top" style="--i:0">
+            <circle class="hx-node-halo" cx="340" cy="100" r="15"/>
+            <circle class="hx-node-dot" cx="340" cy="100" r="7"/>
+            <text class="hx-node-label" x="340" y="64" text-anchor="middle">Voice AI</text>
+            <text class="hx-node-sub" x="340" y="81" text-anchor="middle">Twilio · Whisper · TTS</text>
+          </g>
+          <g class="hx-node hx-node--right" style="--i:1">
+            <circle class="hx-node-halo" cx="495.9" cy="190" r="15"/>
+            <circle class="hx-node-dot" cx="495.9" cy="190" r="7"/>
+            <text class="hx-node-label" x="513.9" y="189" text-anchor="start">GraphRAG</text>
+            <text class="hx-node-sub" x="513.9" y="207" text-anchor="start">Neo4j · RAG</text>
+          </g>
+          <g class="hx-node hx-node--right" style="--i:2">
+            <circle class="hx-node-halo" cx="495.9" cy="370" r="15"/>
+            <circle class="hx-node-dot" cx="495.9" cy="370" r="7"/>
+            <text class="hx-node-label" x="513.9" y="369" text-anchor="start">Multi-agent</text>
+            <text class="hx-node-sub" x="513.9" y="387" text-anchor="start">CrewAI · Claude agents</text>
+          </g>
+          <g class="hx-node hx-node--bottom" style="--i:3">
+            <circle class="hx-node-halo" cx="340" cy="460" r="15"/>
+            <circle class="hx-node-dot" cx="340" cy="460" r="7"/>
+            <text class="hx-node-label" x="340" y="496" text-anchor="middle">Human-in-the-loop</text>
+            <text class="hx-node-sub" x="340" y="513" text-anchor="middle">approvals · audit trail</text>
+          </g>
+          <g class="hx-node hx-node--left" style="--i:4">
+            <circle class="hx-node-halo" cx="184.1" cy="370" r="15"/>
+            <circle class="hx-node-dot" cx="184.1" cy="370" r="7"/>
+            <text class="hx-node-label" x="166.1" y="369" text-anchor="end">Air-gapped</text>
+            <text class="hx-node-sub" x="166.1" y="387" text-anchor="end">local LLMs · IL4+</text>
+          </g>
+          <g class="hx-node hx-node--left" style="--i:5">
+            <circle class="hx-node-halo" cx="184.1" cy="190" r="15"/>
+            <circle class="hx-node-dot" cx="184.1" cy="190" r="7"/>
+            <text class="hx-node-label" x="166.1" y="189" text-anchor="end">Serverless</text>
+            <text class="hx-node-sub" x="166.1" y="207" text-anchor="end">AWS Bedrock · Lambda</text>
+          </g>
+          </g>
+        </svg>
+      </div><!-- /.hero-visual -->
+
+      </div><!-- /.hero-grid -->
 
       <div class="hero-meta">
         <div class="hero-meta-item">
           <span class="hero-meta-label">Current</span>
           <span class="hero-meta-value">Director of AI Engineering</span>
-          <span class="hero-meta-sub">Sears Home Services</span>
+          <span class="hero-meta-sub">Sears Home Services · Apr 2026 — Present</span>
         </div>
         <div class="hero-meta-item">
           <span class="hero-meta-label">Doctoral Research</span>
@@ -100,6 +302,61 @@
     </div>
   </header>
 
+  <!-- CURRENTLY / NOW -->
+  <section class="section section-tight">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Currently</span>
+        <h2 class="section-title">What I'm focused on</h2>
+        <p class="section-sub">A live snapshot — updated as the work shifts.</p>
+      </div>
+
+      <div class="now-grid">
+        <article class="now-card">
+          <div class="now-card-head">
+            <span class="now-card-dot accent" aria-hidden="true"></span>
+            <span class="now-card-label">Shipping</span>
+          </div>
+          <h3 class="now-card-title">Voice AI for in-home services</h3>
+          <p class="now-card-desc">
+            Replacing legacy telephony workflows with <strong>real-time speech recognition,
+            LLM reasoning, and low-latency TTS</strong> at Sears Home Services — one of the
+            largest in-home services networks in the country.
+          </p>
+          <span class="now-card-meta">Sears Home Services · production</span>
+        </article>
+
+        <article class="now-card">
+          <div class="now-card-head">
+            <span class="now-card-dot warm" aria-hidden="true"></span>
+            <span class="now-card-label">Investigating</span>
+          </div>
+          <h3 class="now-card-title">Economic determinants of AI ROI</h3>
+          <p class="now-card-desc">
+            Doctoral research at GWU into the capital structures, governance constraints,
+            and incentive systems that separate firms that <strong>capture economic return</strong>
+            from AI from those that don't.
+          </p>
+          <span class="now-card-meta">D.Eng. AI &amp; ML · in progress</span>
+        </article>
+
+        <article class="now-card">
+          <div class="now-card-head">
+            <span class="now-card-dot" aria-hidden="true"></span>
+            <span class="now-card-label">Focus areas</span>
+          </div>
+          <h3 class="now-card-title">Production AI in secure environments</h3>
+          <p class="now-card-desc">
+            Voice AI architecture, agentic systems, GraphRAG, and air-gapped LLM
+            deployment. The technical and economic patterns behind
+            <strong>products over PowerPoints</strong> — AI that ships and scales.
+          </p>
+          <span class="now-card-meta">Where my attention lives</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- WHAT I DO -->
   <section class="section">
     <div class="container">
@@ -111,24 +368,33 @@
 
       <div class="pillars">
         <article class="pillar">
-          <div class="pillar-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+          <div class="pillar-head">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <span class="pillar-num">01</span>
           </div>
           <h3>Applied AI</h3>
-          <p>Voice AI, agentic architectures, RAG and GraphRAG. I take models out of notebooks and put them into production — with the lineage tracking, observability, and auditability that real systems need.</p>
+          <p>Voice AI, agentic architectures, RAG and GraphRAG. I take models out of notebooks and put them into production — with the lineage tracking, observability, and auditability real systems need.</p>
         </article>
 
         <article class="pillar">
-          <div class="pillar-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div class="pillar-head">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <span class="pillar-num">02</span>
           </div>
           <h3>Secure Deployment</h3>
-          <p>Air-gapped enclaves, IL4+ DoD environments, classified networks, and PII-safe enterprise pipelines. TS/SCI cleared. I deploy AI where most teams won't or can't.</p>
+          <p>Air-gapped enclaves, IL4+ DoD environments, classified networks, and PII-safe enterprise pipelines. <strong>TS/SCI cleared.</strong> I deploy AI where most teams won't or can't.</p>
         </article>
 
         <article class="pillar">
-          <div class="pillar-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="pillar-head">
+            <div class="pillar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="pillar-num">03</span>
           </div>
           <h3>Engineering Leadership</h3>
           <p>Director-level org leadership, cross-functional teams, architecture reviews, hiring, and executive alignment. Shipping discipline that connects AI capability to business outcomes.</p>
@@ -151,109 +417,1339 @@
         </div>
         <div class="stat">
           <div class="stat-value">5</div>
-          <div class="stat-label">Federal customers supported<br/>(USSF · CDAO · USAF · Army · DoD)</div>
+          <div class="stat-label">Federal customers supported<br/>USSF · CDAO · USAF · Army · DoD</div>
         </div>
         <div class="stat">
           <div class="stat-value">20–30%</div>
-          <div class="stat-label">Cost reduction on serverless AI ingestion platform</div>
+          <div class="stat-label">Cost reduction on serverless<br/>AI ingestion platform</div>
         </div>
         <div class="stat">
           <div class="stat-value">2×</div>
-          <div class="stat-label">Hackathon wins<br/>(CDAO · DoD Bravo-Opana)</div>
+          <div class="stat-label">Hackathon wins<br/>CDAO · DoD Bravo-Opana</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TECH SNAPSHOT -->
+  <!-- TECH STACK (categorized) -->
   <section class="section section-tight">
     <div class="container">
       <div class="section-header">
         <span class="section-label">Tech I reach for</span>
         <h2 class="section-title">The stack</h2>
-        <p class="section-sub">A snapshot. The full breakdown lives on the experience tags.</p>
+        <p class="section-sub">Categorized by role. Everything here is something I've shipped with.</p>
       </div>
-      <div class="tech-cloud">
-        <span class="tech-chip">Python</span>
-        <span class="tech-chip">Go</span>
-        <span class="tech-chip">FastAPI</span>
-        <span class="tech-chip">CrewAI</span>
-        <span class="tech-chip">LangChain</span>
-        <span class="tech-chip">Neo4j</span>
-        <span class="tech-chip">PostgreSQL</span>
-        <span class="tech-chip">FAISS</span>
-        <span class="tech-chip">Chroma</span>
-        <span class="tech-chip">AWS Bedrock</span>
-        <span class="tech-chip">Lambda</span>
-        <span class="tech-chip">CloudFront</span>
-        <span class="tech-chip">GCP</span>
-        <span class="tech-chip">Docker</span>
-        <span class="tech-chip">Twilio</span>
-        <span class="tech-chip">Whisper</span>
-        <span class="tech-chip">Voice AI</span>
-        <span class="tech-chip">GraphRAG</span>
-        <span class="tech-chip">Air-Gapped</span>
-        <span class="tech-chip">IL4+</span>
+
+      <div class="stack-grid">
+        <div class="stack-row">
+          <div class="stack-cat">
+            <span class="stack-cat-num">01</span>
+            <span>Languages</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Python</span>
+            <span class="stack-item">Go</span>
+            <span class="stack-item">TypeScript</span>
+            <span class="stack-item">SQL</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="stack-cat">
+            <span class="stack-cat-num">02</span>
+            <span>AI &amp; ML</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">LangChain</span>
+            <span class="stack-item">CrewAI</span>
+            <span class="stack-item">AWS Bedrock</span>
+            <span class="stack-item">Whisper</span>
+            <span class="stack-item">Voice AI</span>
+            <span class="stack-item">GraphRAG</span>
+            <span class="stack-item">FAISS</span>
+            <span class="stack-item">Chroma</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="stack-cat">
+            <span class="stack-cat-num">03</span>
+            <span>Data</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Neo4j</span>
+            <span class="stack-item">PostgreSQL</span>
+            <span class="stack-item">BigQuery</span>
+            <span class="stack-item">Airflow</span>
+            <span class="stack-item">NLTK</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="stack-cat">
+            <span class="stack-cat-num">04</span>
+            <span>Cloud &amp; Infra</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">AWS</span>
+            <span class="stack-item">Docker</span>
+            <span class="stack-item">Lambda</span>
+            <span class="stack-item">CloudFront</span>
+            <span class="stack-item">API Gateway</span>
+            <span class="stack-item">FastAPI</span>
+            <span class="stack-item">GCP</span>
+            <span class="stack-item">GitLab</span>
+          </div>
+        </div>
+
+        <div class="stack-row">
+          <div class="stack-cat">
+            <span class="stack-cat-num">05</span>
+            <span>Security &amp; Compliance</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Air-Gapped</span>
+            <span class="stack-item">IL4+</span>
+            <span class="stack-item">Classified networks</span>
+            <span class="stack-item">PII-safe pipelines</span>
+            <span class="stack-item">TS/SCI</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- EXPLORE / DEEPER -->
-  <section class="section">
+  <div class="page-section" id="experience">
+  <header class="page-header">
     <div class="container">
-      <div class="section-header section-header-center">
-        <span class="section-label">Explore</span>
-        <h2 class="section-title">Outcome as a Service</h2>
-        <p class="section-sub">I deliver <strong>products over PowerPoints</strong>. AI can be <strong>scalable and affordable</strong> when done correctly.</p>
+      <div class="page-header-tag">
+        <span class="page-header-tag-num">01 / 05</span>
+        <span class="section-label">Career</span>
       </div>
+      <h2 class="page-header-title">Experience</h2>
+      <p class="page-header-sub">From data engineering to executive AI leadership — federal and commercial. Every role expanded.</p>
+      <div class="page-header-meta">
+        <div class="page-header-meta-item">
+          <span class="label">Current</span>
+          <span class="value">Director of AI Engineering</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Federal customers</span>
+          <span class="value">USSF · CDAO · USAF · Army · DoD</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Years in AI/ML</span>
+          <span class="value">5+ professional</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <div class="next-grid">
-        <a class="next-card" href="experience.html">
-          <span class="next-card-label">Career</span>
-          <span class="next-card-title">
-            <span>Experience</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-          <span class="next-card-desc">Booz Allen → Caylent → Director at Sears Home Services. Full timeline with sub-roles for every federal customer.</span>
+  <section class="section section-top">
+    <div class="container">
+      <ol class="timeline">
+
+        <!-- Sears Home Services -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Director of AI Engineering</h3>
+                <p class="timeline-company">Sears Home Services</p>
+              </div>
+              <div class="timeline-meta">
+                <span class="tag tag-active">Current</span>
+                <span class="timeline-date">Apr 2026 — Present</span>
+                <span class="timeline-loc">San Antonio, TX</span>
+              </div>
+            </header>
+            <ul class="timeline-bullets">
+              <li>Leading the AI engineering organization, owning strategy and architecture for AI-powered customer operations across one of the largest in-home services networks in the country.</li>
+              <li>Architecting <strong>voice AI / conversational AI</strong> systems that replace legacy phone-based workflows — real-time speech recognition, LLM-based reasoning and negotiation, and low-latency TTS synthesis over telephony.</li>
+              <li>Driving a <strong>cost-disciplined AI deployment strategy</strong>, blending self-hosted open-source models with selective managed services to deliver enterprise capability at predictable, sub-enterprise-SaaS cost.</li>
+              <li>Setting engineering standards, hiring and mentoring AI engineers, and aligning the AI roadmap with executive priorities.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Voice AI</span>
+              <span class="tag">Real-time Streaming</span>
+              <span class="tag">LLMs</span>
+              <span class="tag">Twilio</span>
+              <span class="tag">Whisper</span>
+              <span class="tag">TTS</span>
+              <span class="tag">Self-hosted</span>
+              <span class="tag">Engineering Leadership</span>
+            </div>
+          </article>
+        </li>
+
+        <!-- Caylent -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Senior Cloud Architect, AI/ML</h3>
+                <p class="timeline-company">Caylent <span class="muted">(formerly Trek10 — acquired 2025)</span></p>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">Jul 2025 — Mar 2026</span>
+                <span class="timeline-loc">San Antonio, TX</span>
+              </div>
+            </header>
+            <ul class="timeline-bullets">
+              <li>Architected and deployed a distributed, <strong>air-gapped multi-agent AI tax system</strong> (5-agent architecture) with GraphRAG (Neo4j) for traceable reasoning, lineage tracking, and explainable outputs across tax and financial data. Implemented in Python (FastAPI), Dockerized microservices, and a vanilla JS/HTML/CSS frontend — secure, compliant processing of PII inside isolated environments.</li>
+              <li>Designed and implemented a <strong>scalable, serverless AI document-processing platform on AWS</strong> (CloudFront, S3, API Gateway, Lambda, Bedrock) for structured and unstructured extraction from PDFs and images. Cut processing costs <strong>20–30%</strong> via serverless architecture and model-utilization tuning.</li>
+              <li>Authored and refined client-facing SOWs and technical proposals, aligning scope, timelines, resourcing, and architecture with executive stakeholder expectations.</li>
+              <li>Technical lead for cross-functional engineering teams — mentoring developers, running architecture reviews, and enforcing production-grade implementation standards.</li>
+              <li>Primary technical interface to clients — leading architecture workshops, roadmap discussions, and executive briefings aligning AI strategy with business objectives.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Multi-Agent</span>
+              <span class="tag">GraphRAG</span>
+              <span class="tag">Neo4j</span>
+              <span class="tag">AWS Bedrock</span>
+              <span class="tag">Lambda</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Air-Gapped</span>
+            </div>
+          </article>
+        </li>
+
+        <!-- BAH AI Solutions Architect -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Artificial Intelligence Solutions Architect</h3>
+                <p class="timeline-company">Booz Allen Hamilton</p>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">Nov 2023 — Jul 2025</span>
+                <span class="timeline-loc">San Antonio, TX</span>
+              </div>
+            </header>
+
+            <div class="subrole">
+              <h4 class="subrole-title">U.S. Space Force (USSF) — AI Lead</h4>
+              <ul class="timeline-bullets">
+                <li>AI lead for a <strong>$531M USSF program</strong>, directing a team developing the data model for the knowledge service and AI integration into USSF infrastructure.</li>
+                <li>Built agentic RAG/GraphRAG architecture for <strong>air-gapped LLM capabilities on IL4+ environments</strong> (CrewAI, LangChain, Neo4j, FastAPI, Docker, GitLab).</li>
+                <li>Partnered with USSF officials and senior leadership to map program requirements for integrating AI into existing DoD infrastructure.</li>
+                <li>Re-implemented an enterprise-grade API by porting from Python to <strong>Go</strong>, yielding a more scalable, resource-efficient solution.</li>
+                <li>Established deliverables, use cases, and timelines for accurate project budgets — personnel and compute cost control.</li>
+              </ul>
+            </div>
+
+            <div class="subrole">
+              <h4 class="subrole-title">Internal Research &amp; Development (IRAD) — Software Development Lead / AI SME</h4>
+              <ul class="timeline-bullets">
+                <li>Designed an innovative architecture for integrating LLM capabilities into unstructured-data conversion, aligned with ontology standards.</li>
+                <li>Improved RAG techniques on Neo4j aligned with <em>Commander's Intent</em>, producing optimized data-driven decision support.</li>
+                <li>Led and mentored junior engineers building a containerized Neo4j graph database, raising team proficiency in graph data management.</li>
+              </ul>
+            </div>
+
+            <div class="tags">
+              <span class="tag">CrewAI</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">Neo4j</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Go</span>
+              <span class="tag">Docker</span>
+              <span class="tag">GitLab</span>
+              <span class="tag">IL4+</span>
+            </div>
+          </article>
+        </li>
+
+        <!-- BAH Lead ML Engineer -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Lead Machine Learning Engineer</h3>
+                <p class="timeline-company">Booz Allen Hamilton</p>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">Apr 2023 — Nov 2023</span>
+                <span class="timeline-loc">San Antonio, TX</span>
+              </div>
+            </header>
+
+            <div class="subrole">
+              <h4 class="subrole-title">DoD Chief Digital &amp; AI Office (CDAO) — Technical Lead</h4>
+              <ul class="timeline-bullets">
+                <li>Pioneered an LLM-integration architecture that lifted data processing and decision-making capability (Python, LangChain, PostgreSQL, FastAPI, Docker).</li>
+                <li>Deployed a FAISS vector database and an LLM-integrated FastAPI service, significantly improving analytical precision.</li>
+                <li>Designed an agent-based approach to assist J2 officers at combatant commands, streamlining critical intelligence operations.</li>
+                <li>Delivered briefings and demonstrations for Task Force LIMA leadership, keeping the technical work aligned with mission objectives.</li>
+              </ul>
+            </div>
+
+            <div class="subrole">
+              <h4 class="subrole-title">U.S. Air Force, F-35 Program — Senior Software Engineer, AI Development &amp; Integration</h4>
+              <ul class="timeline-bullets">
+                <li>Designed a data pipeline architecture spanning Postgres, Neo4j, and FAISS.</li>
+                <li>Built a Docker-containerized microservices architecture for scalability and maintainability.</li>
+                <li>Used AWS to deploy data pipelines with seamless integration to CUI data sources.</li>
+                <li>Created a Python middleware API facilitating clean inter-service data exchange.</li>
+                <li>Engineered an LLM-integration architecture incorporating short- and long-term memory.</li>
+                <li>Presented progress and recommendations to leadership and stakeholders.</li>
+              </ul>
+            </div>
+
+            <div class="subrole">
+              <h4 class="subrole-title">U.S. Army G-38, EOD Knowledge Management — Software Engineer</h4>
+              <ul class="timeline-bullets">
+                <li>Trained and deployed an LLM on GCP, demonstrating AI's continuing impact on data engineering and ML for the client.</li>
+                <li>Deployed and configured a Chroma vector database on GCP — a cost-effective query and organization layer within budget.</li>
+                <li>Built a PostgreSQL-backed ingestion engine for large-scale ETL across PDFs, audio, and photos.</li>
+                <li>Mentored engineers in NLP techniques — text classification, keyword extraction, lemmatization, and stemming (NLTK).</li>
+              </ul>
+            </div>
+
+            <div class="tags">
+              <span class="tag">LangChain</span>
+              <span class="tag">FAISS</span>
+              <span class="tag">Chroma</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Neo4j</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">AWS</span>
+              <span class="tag">GCP</span>
+              <span class="tag">Docker</span>
+              <span class="tag">NLTK</span>
+            </div>
+          </article>
+        </li>
+
+        <!-- BAH Data Engineer -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Data Engineer</h3>
+                <p class="timeline-company">Booz Allen Hamilton</p>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">Feb 2022 — Apr 2023</span>
+                <span class="timeline-loc">San Antonio, TX</span>
+              </div>
+            </header>
+            <div class="subrole">
+              <h4 class="subrole-title">DoD CDAO — Technical Lead (Deputy)</h4>
+              <ul class="timeline-bullets">
+                <li>Served as Deputy Technical Lead, providing technical leadership and overseeing delivery for a team of 3.</li>
+                <li>Leveraged OCR (pytesseract) in Python for accurate, streamlined ETL.</li>
+                <li>Mentored junior developers, accelerating their technical growth.</li>
+              </ul>
+            </div>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">pytesseract</span>
+              <span class="tag">ETL</span>
+              <span class="tag">Mentorship</span>
+            </div>
+          </article>
+        </li>
+
+        <!-- iHeartMedia Intern -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Data Engineer Intern</h3>
+                <p class="timeline-company">iHeartMedia <span class="muted">(Internship)</span></p>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">Jun 2021 — Aug 2021</span>
+                <span class="timeline-loc">San Antonio, TX</span>
+              </div>
+            </header>
+            <ul class="timeline-bullets">
+              <li>Collaborated on the Analytics Platform team to design and develop a user-friendly interface for cross-functional teams using <strong>Docker, Google Cloud Platform, Airflow, SQL, and Python</strong>.</li>
+              <li>Built Python scripts to parse SQL statements and manage Airflow DAGs, incorporating BigQuery operators for seamless data processing.</li>
+              <li>Worked in a Scrum-based environment, contributing to the software development life cycle and agile team rituals.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Airflow</span>
+              <span class="tag">BigQuery</span>
+              <span class="tag">GCP</span>
+              <span class="tag">Docker</span>
+              <span class="tag">SQL</span>
+            </div>
+          </article>
+        </li>
+
+        <!-- UTSA Data Engineer -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Data Engineer</h3>
+                <p class="timeline-company">The University of Texas at San Antonio</p>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">Jun 2020 — May 2021</span>
+                <span class="timeline-loc">San Antonio, TX</span>
+              </div>
+            </header>
+            <ul class="timeline-bullets">
+              <li>Designed and implemented <strong>web scrapers</strong> to aggregate data on NFL team valuations and individual player statistics — building a foundation for data-driven research.</li>
+              <li>Cleaned, transformed, and extracted data for rigorous econometric analysis, surfacing actionable patterns.</li>
+              <li>Built visualizations (graphs, tables, plots) to communicate critical findings to faculty and collaborators.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Web Scraping</span>
+              <span class="tag">Econometrics</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">ETL</span>
+            </div>
+          </article>
+        </li>
+
+        <!-- NJDHS Economic Researcher -->
+        <li class="timeline-item">
+          <div class="timeline-marker"><span></span></div>
+          <article class="timeline-card">
+            <header class="timeline-card-head">
+              <div>
+                <h3 class="timeline-role">Economic Researcher</h3>
+                <p class="timeline-company">New Jersey Department of Human Services (NJDHS)</p>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-date">Jan 2016 — May 2016</span>
+                <span class="timeline-loc">Lawrenceville, NJ</span>
+              </div>
+            </header>
+
+            <div class="publication">
+              <span class="publication-label">Published research</span>
+              <h4 class="publication-title">New Jersey Medicaid Expansion: Enrollment, Disenrollment, &amp; Costs</h4>
+              <p class="publication-desc">
+                The ACA enabled New Jersey to extend <strong>NJ FamilyCare</strong> to all non-elderly adults
+                under 138% of the federal poverty level in January 2014. This research examined the
+                <strong>Alternative Benefits Program (ABP)</strong> — the expansion vehicle that took on
+                roughly <strong>750,000 enrollees</strong> in its first 25 months — analyzing who disenrolled,
+                the subset who later experienced a medical emergency, the expenditures associated with those
+                emergencies, and the costs tied to each enrollment path (county offices, general-assistance
+                conversion, the federal ACA portal, and presumptive eligibility).
+              </p>
+              <a href="https://www.rider.edu/sites/default/files/files/iscap_program_2016_2.pdf"
+                 class="publication-link"
+                 target="_blank"
+                 rel="noopener">
+                <span>rider.edu/.../iscap_program_2016_2.pdf</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+
+            <ul class="timeline-bullets">
+              <li>Performed economic analysis of healthcare expansion data, modeling the factors affecting enrollment, disenrollment, and medical-emergency expenditures.</li>
+              <li>Built econometric models using <strong>regression and bivariate analysis</strong> on a large NJ state administrative dataset.</li>
+              <li>Compared cost dynamics across four enrollment paths: county offices, general-assistance conversion, the federal ACA portal, and presumptive eligibility.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Econometrics</span>
+              <span class="tag">Regression Analysis</span>
+              <span class="tag">Healthcare Policy</span>
+              <span class="tag">Medicaid / ACA</span>
+              <span class="tag">Published Research</span>
+            </div>
+          </article>
+        </li>
+
+      </ol>
+
+      <div class="page-cta">
+        <a href="#education" class="btn btn-ghost">
+          <span>Academic background</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-
-        <a class="next-card" href="education.html">
-          <span class="next-card-label">Academic</span>
-          <span class="next-card-title">
-            <span>Education</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-          <span class="next-card-desc">Doctorate at GWU (in progress), MIT certificate, MA Economics, MS Financial Engineering, BSBA Econ + Finance. Plus thesis detail.</span>
-        </a>
-
-        <a class="next-card" href="credentials.html">
-          <span class="next-card-label">Proof</span>
-          <span class="next-card-title">
-            <span>Credentials</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-          <span class="next-card-desc">Neo4j certifications, DoD hackathon wins, Booz Allen mentorship and AI leadership programs.</span>
-        </a>
-
-        <a class="next-card" href="contact.html">
-          <span class="next-card-label">Talk</span>
-          <span class="next-card-title">
-            <span>Contact</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-          <span class="next-card-desc">Email, phone, location. The fastest way to start a conversation about applied AI at scale.</span>
+        <a href="#credentials" class="btn btn-ghost">
+          <span>Credentials &amp; awards</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
   </section>
+  </div>
+
+  <div class="page-section" id="projects">
+  <header class="page-header">
+    <div class="container">
+      <div class="page-header-tag">
+        <span class="page-header-tag-num">02 / 05</span>
+        <span class="section-label">Systems</span>
+      </div>
+      <h2 class="page-header-title">Projects</h2>
+      <p class="page-header-sub">The architectures behind the work: Claude agents, local open-weight models, RAG, GraphRAG, multi-agent systems, and real-time voice. Each one diagrammed at the architecture level.</p>
+      <div class="page-header-meta">
+        <div class="page-header-meta-item">
+          <span class="label">Patterns</span>
+          <span class="value">Agents · RAG · GraphRAG · Voice</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Deployment</span>
+          <span class="value">Air-gapped · Self-hosted · Serverless</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Sectors</span>
+          <span class="value">Public sector · Commercial</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section-top">
+    <div class="container">
+
+      <div class="project-filter" role="group" aria-label="Filter projects by architecture">
+        <button class="filter-chip is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-chip" data-filter="claude" aria-pressed="false"><i class="k-claude"></i>Claude agents</button>
+        <button class="filter-chip" data-filter="local" aria-pressed="false"><i class="k-local"></i>Local LLM</button>
+        <button class="filter-chip" data-filter="multi" aria-pressed="false"><i class="k-multi"></i>Multi-agent</button>
+        <button class="filter-chip" data-filter="graphrag" aria-pressed="false"><i class="k-graph"></i>GraphRAG</button>
+        <button class="filter-chip" data-filter="rag" aria-pressed="false"><i class="k-rag"></i>RAG</button>
+        <button class="filter-chip" data-filter="chatbot" aria-pressed="false"><i class="k-chat"></i>Chatbot</button>
+        <button class="filter-chip" data-filter="voice" aria-pressed="false"><i class="k-voice"></i>Voice AI</button>
+        <button class="filter-chip" data-filter="serverless" aria-pressed="false"><i class="k-cloud"></i>Serverless</button>
+      </div>
+
+      <!-- ================= Commercial ================= -->
+      <div class="project-group">
+        <div class="project-group-head">
+          <span class="section-label">// commercial</span>
+          <h2 class="project-group-title">Shipped for enterprise</h2>
+        </div>
+
+        <!-- Voice AI -->
+        <article class="project-card is-featured" data-kind="voice local chatbot">
+          <div class="project-head">
+            <span class="project-badge">Featured · Voice AI · Self-hosted</span>
+            <h3 class="project-title">Real-time voice agent for field-service operations</h3>
+            <span class="project-meta">Production · 2026</span>
+          </div>
+          <p class="project-summary">
+            A phone agent that replaces a legacy IVR workflow: it takes calls from field technicians,
+            gathers what they need, then <strong>reasons and negotiates on their behalf</strong>, all in real
+            time over a standard phone line, on <strong>self-hosted open-weight models</strong> so cost stays
+            predictable.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: caller audio streams through telephony into self-hosted speech-to-text, an LLM agent, and text-to-speech, then back to the caller.">
+            <div class="arch-node">
+              <span class="arch-step">01</span>
+              <span class="arch-name">Caller</span>
+              <span class="arch-desc">Technician on a regular phone line</span>
+            </div>
+            <div class="arch-arrow"><span>audio</span></div>
+            <div class="arch-node is-edge">
+              <span class="arch-step">02</span>
+              <span class="arch-name">Telephony</span>
+              <span class="arch-desc">Twilio Media Streams over WebSocket</span>
+            </div>
+            <div class="arch-arrow"><span>stream</span></div>
+            <div class="arch-zone" style="--n: 3">
+              <span class="arch-zone-label">self-hosted</span>
+              <div class="arch-node">
+                <span class="arch-step">03</span>
+                <span class="arch-name">Speech-to-text</span>
+                <span class="arch-desc">Whisper + voice-activity turn-taking</span>
+              </div>
+              <div class="arch-arrow"><span>transcript</span></div>
+              <div class="arch-node is-ai">
+                <span class="arch-step">04</span>
+                <span class="arch-name">LLM agent</span>
+                <span class="arch-desc">Open-weight model · intake, reasoning, negotiation</span>
+              </div>
+              <div class="arch-arrow"><span>reply</span></div>
+              <div class="arch-node">
+                <span class="arch-step">05</span>
+                <span class="arch-name">Text-to-speech</span>
+                <span class="arch-desc">Low-latency synthesis streamed back to the call</span>
+              </div>
+            </div>
+          </div>
+
+          <ul class="project-points">
+            <li><strong>Streaming end to end:</strong> audio is transcribed, reasoned over, and spoken back while the call is live. No record-then-process round trips.</li>
+            <li><strong>Cost discipline by design:</strong> self-hosted open-source models keep cost predictable and well below enterprise SaaS pricing.</li>
+            <li><strong>Agent with a job:</strong> the LLM doesn't just chat; it gathers the details needed and handles the follow-up conversation on the technician's behalf.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Voice AI</span><span class="tag">Twilio</span><span class="tag">Whisper</span><span class="tag">Open-weight LLM</span><span class="tag">TTS</span><span class="tag">WebSockets</span><span class="tag">Self-hosted</span>
+          </div>
+        </article>
+
+        <!-- Multi-agent tax -->
+        <article class="project-card" data-kind="multi graphrag local">
+          <div class="project-head">
+            <span class="project-badge">Multi-agent · GraphRAG · Air-gapped</span>
+            <h3 class="project-title">Air-gapped multi-agent system for tax &amp; financial data</h3>
+            <span class="project-meta">Production · 2025–2026</span>
+          </div>
+          <p class="project-summary">
+            A <strong>five-agent architecture</strong> that works through tax and financial records inside an
+            isolated environment, grounding every answer in a <strong>Neo4j knowledge graph</strong> for traceable
+            reasoning, lineage tracking, and explainable outputs.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: FastAPI microservices ingest the documents and load them into a Neo4j GraphRAG layer; five agents query the graph and cite it, then send explainable output to the UI. All inside an air-gapped boundary.">
+            <div class="arch-zone" style="--n: 5">
+              <span class="arch-zone-label">air-gapped · PII stays inside</span>
+              <div class="arch-node is-data">
+                <span class="arch-step">01</span>
+                <span class="arch-name">Documents</span>
+                <span class="arch-desc">Tax &amp; financial records, PII</span>
+              </div>
+              <div class="arch-arrow"><span>ingest</span></div>
+              <div class="arch-node">
+                <span class="arch-step">02</span>
+                <span class="arch-name">Ingestion services</span>
+                <span class="arch-desc">FastAPI microservices · Docker</span>
+              </div>
+              <div class="arch-arrow"><span>load</span></div>
+              <div class="arch-node is-data">
+                <span class="arch-step">03</span>
+                <span class="arch-name">GraphRAG</span>
+                <span class="arch-desc">Neo4j graph · lineage tracking</span>
+              </div>
+              <div class="arch-arrow is-both"><span>query</span></div>
+              <div class="arch-node is-ai">
+                <span class="arch-step">04</span>
+                <span class="arch-name">5-agent system</span>
+                <ul class="arch-fan" aria-hidden="true"><li>agent</li><li>agent</li><li>agent</li><li>agent</li><li>agent</li></ul>
+              </div>
+              <div class="arch-arrow"><span>answer</span></div>
+              <div class="arch-node is-edge">
+                <span class="arch-step">05</span>
+                <span class="arch-name">Explainable output</span>
+                <span class="arch-desc">Traceable reasoning in a vanilla JS UI</span>
+              </div>
+            </div>
+          </div>
+
+          <ul class="project-points">
+            <li><strong>Traceable by default:</strong> graph-grounded retrieval gives lineage tracking and explainable outputs across tax and financial data.</li>
+            <li><strong>Compliant isolation:</strong> Dockerized services run fully disconnected, so sensitive data never leaves the boundary.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Multi-agent</span><span class="tag">GraphRAG</span><span class="tag">Neo4j</span><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Python</span><span class="tag">Air-gapped</span>
+          </div>
+        </article>
+
+        <!-- Serverless doc processing -->
+        <article class="project-card" data-kind="serverless">
+          <div class="project-head">
+            <span class="project-badge">Serverless · Document AI · AWS</span>
+            <h3 class="project-title">Serverless AI document-processing platform</h3>
+            <span class="project-meta">2025–2026</span>
+          </div>
+          <p class="project-summary">
+            Structured and unstructured extraction from PDFs and images on a fully serverless AWS stack,
+            where serverless design and model-utilization tuning <strong>cut processing cost 20–30%</strong>.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: uploads through CloudFront and S3, API Gateway invokes Lambda, which calls Bedrock models, producing structured data.">
+            <div class="arch-node is-edge">
+              <span class="arch-step">01</span>
+              <span class="arch-name">CloudFront + S3</span>
+              <span class="arch-desc">Upload PDFs and images</span>
+            </div>
+            <div class="arch-arrow"><span>request</span></div>
+            <div class="arch-node">
+              <span class="arch-step">02</span>
+              <span class="arch-name">API Gateway</span>
+              <span class="arch-desc">API entry point</span>
+            </div>
+            <div class="arch-arrow"><span>invoke</span></div>
+            <div class="arch-node">
+              <span class="arch-step">03</span>
+              <span class="arch-name">Lambda</span>
+              <span class="arch-desc">Serverless compute</span>
+            </div>
+            <div class="arch-arrow"><span>prompt</span></div>
+            <div class="arch-node is-ai">
+              <span class="arch-step">04</span>
+              <span class="arch-name">Bedrock</span>
+              <span class="arch-desc">Foundation models for extraction</span>
+            </div>
+            <div class="arch-arrow"><span>extract</span></div>
+            <div class="arch-node is-data">
+              <span class="arch-step">05</span>
+              <span class="arch-name">Structured data</span>
+              <span class="arch-desc">From PDFs and images</span>
+            </div>
+          </div>
+
+          <ul class="project-points">
+            <li><strong>No idle servers:</strong> a fully serverless stack, from CDN to model calls.</li>
+            <li><strong>20–30% lower cost:</strong> from the serverless architecture plus model-utilization tuning.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AWS Bedrock</span><span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">CloudFront</span><span class="tag">S3</span>
+          </div>
+        </article>
+
+        <!-- Claude agent built this site -->
+        <article class="project-card" data-kind="claude">
+          <div class="project-head">
+            <span class="project-badge">Claude agents · Agentic engineering</span>
+            <h3 class="project-title">This site, built with a Claude coding agent</h3>
+            <span class="project-meta">enzobonelli.com · 2026</span>
+          </div>
+          <p class="project-summary">
+            I used <strong>Claude</strong> as an autonomous coding agent in my terminal to research, design,
+            write, and ship this site, with me setting direction and <strong>approving every action that
+            touches the outside world</strong>.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: the engineer gives goals and approvals to a Claude agent, which uses local tools to commit to GitHub, which deploys to DigitalOcean App Platform.">
+            <div class="arch-node">
+              <span class="arch-step">01</span>
+              <span class="arch-name">Engineer</span>
+              <span class="arch-desc">Sets goals, reviews, approves publishing</span>
+            </div>
+            <div class="arch-arrow"><span>approve</span></div>
+            <div class="arch-node is-ai">
+              <span class="arch-step">02</span>
+              <span class="arch-name">Claude agent</span>
+              <span class="arch-desc">Plans, writes code, verifies its own work</span>
+            </div>
+            <div class="arch-arrow"><span>tool calls</span></div>
+            <div class="arch-node">
+              <span class="arch-step">03</span>
+              <span class="arch-name">Tooling</span>
+              <span class="arch-desc">Shell · file edits · git · web fetch</span>
+            </div>
+            <div class="arch-arrow"><span>push</span></div>
+            <div class="arch-node is-data">
+              <span class="arch-step">04</span>
+              <span class="arch-name">GitHub</span>
+              <span class="arch-desc">Source of truth</span>
+            </div>
+            <div class="arch-arrow"><span>auto-deploy</span></div>
+            <div class="arch-node is-edge">
+              <span class="arch-step">05</span>
+              <span class="arch-name">DigitalOcean</span>
+              <span class="arch-desc">App Platform · CDN · TLS</span>
+            </div>
+          </div>
+
+          <ul class="project-points">
+            <li><strong>Agent with real tools:</strong> it read the existing code, studied reference designs, wrote the HTML/CSS/JS, and checked DNS and hosting from the shell.</li>
+            <li><strong>Human-in-the-loop:</strong> pushes and anything public-facing wait for my explicit approval.</li>
+            <li><strong>Plain stack:</strong> no framework, no build step. Static HTML, CSS, and a little JavaScript.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Claude</span><span class="tag">Agentic AI</span><span class="tag">Git</span><span class="tag">DigitalOcean</span><span class="tag">HTML/CSS/JS</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- ================= Public sector ================= -->
+      <div class="project-group">
+        <div class="project-group-head">
+          <span class="section-label">// public sector</span>
+          <h2 class="project-group-title">Public sector work includes</h2>
+          <p class="section-sub">Secure and regulated environments, described at the architecture level only.</p>
+        </div>
+
+        <!-- Agentic GraphRAG IL4+ -->
+        <article class="project-card" data-kind="multi graphrag local">
+          <div class="project-head">
+            <span class="project-badge">Multi-agent · GraphRAG · IL4+</span>
+            <h3 class="project-title">Agentic GraphRAG for air-gapped LLM capability</h3>
+            <span class="project-meta">Public sector · IL4+ environments</span>
+          </div>
+          <p class="project-summary">
+            An <strong>agentic RAG and GraphRAG architecture</strong> that brings LLM capability into
+            air-gapped IL4+ environments, built on a <strong>knowledge-service data model</strong> my team developed.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: a knowledge-service data model in Neo4j is queried by CrewAI agents using LangChain and a local LLM, served through FastAPI. All inside an IL4+ air-gapped boundary.">
+            <div class="arch-zone" style="--n: 4">
+              <span class="arch-zone-label">IL4+ · air-gapped</span>
+              <div class="arch-node is-data">
+                <span class="arch-step">01</span>
+                <span class="arch-name">Knowledge graph</span>
+                <span class="arch-desc">Neo4j · knowledge-service data model</span>
+              </div>
+              <div class="arch-arrow is-both"><span>retrieve</span></div>
+              <div class="arch-node is-ai">
+                <span class="arch-step">02</span>
+                <span class="arch-name">Agents</span>
+                <span class="arch-desc">CrewAI + LangChain</span>
+              </div>
+              <div class="arch-arrow is-both"><span>prompt</span></div>
+              <div class="arch-node is-ai">
+                <span class="arch-step">03</span>
+                <span class="arch-name">Air-gapped LLM</span>
+                <span class="arch-desc">No external model APIs</span>
+              </div>
+              <div class="arch-arrow"><span>serve</span></div>
+              <div class="arch-node is-edge">
+                <span class="arch-step">04</span>
+                <span class="arch-name">API</span>
+                <span class="arch-desc">FastAPI · Docker · GitLab</span>
+              </div>
+            </div>
+          </div>
+
+          <ul class="project-points">
+            <li><strong>AI lead:</strong> directed the team building the knowledge-service data model and the AI integration into existing infrastructure.</li>
+            <li><strong>Performance where it counts:</strong> ported an enterprise API from Python to Go for a more scalable, resource-efficient service.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">CrewAI</span><span class="tag">LangChain</span><span class="tag">Neo4j</span><span class="tag">GraphRAG</span><span class="tag">FastAPI</span><span class="tag">Go</span><span class="tag">GitLab</span><span class="tag">IL4+</span>
+          </div>
+        </article>
+
+        <!-- Local open-weight LLMs -->
+        <article class="project-card" data-kind="local chatbot">
+          <div class="project-head">
+            <span class="project-badge">Local LLM · Air-gapped</span>
+            <h3 class="project-title">Local LLMs on disconnected networks</h3>
+            <span class="project-meta">Public sector · on-prem</span>
+          </div>
+          <p class="project-summary">
+            When there's no internet and no cloud API, the model has to live on the box. I've run
+            <strong>open-weight models like Zephyr 7B β</strong> fully locally, behind full-stack apps,
+            with <strong>no external calls</strong>.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: a user reaches a web app that calls a locally hosted Zephyr 7B beta model, all inside an air-gapped boundary with no internet egress.">
+            <div class="arch-node">
+              <span class="arch-step">01</span>
+              <span class="arch-name">User</span>
+              <span class="arch-desc">On the local network</span>
+            </div>
+            <div class="arch-arrow"><span>request</span></div>
+            <div class="arch-zone" style="--n: 2">
+              <span class="arch-zone-label">air-gapped · no egress</span>
+              <div class="arch-node is-edge">
+                <span class="arch-step">02</span>
+                <span class="arch-name">Web app</span>
+                <span class="arch-desc">Full-stack UI + API</span>
+              </div>
+              <div class="arch-arrow is-both"><span>prompt</span></div>
+              <div class="arch-node is-ai">
+                <span class="arch-step">03</span>
+                <span class="arch-name">Zephyr 7B β</span>
+                <span class="arch-desc">Local inference</span>
+              </div>
+            </div>
+          </div>
+
+          <ul class="project-points">
+            <li><strong>Air-gapped hackathon wins:</strong> 1st place for user interface (and 2nd for innovations &amp; logistics) building a UI and LLM on an air-gapped classified network.</li>
+            <li><strong>Two apps onto a secret enclave:</strong> deployed two full-stack applications at a second defense AI hackathon, which generated new partnerships.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Zephyr 7B β</span><span class="tag">Open-weight LLM</span><span class="tag">Local inference</span><span class="tag">Air-gapped</span><span class="tag">Full-stack</span>
+          </div>
+        </article>
+
+        <!-- Analyst RAG -->
+        <article class="project-card" data-kind="rag">
+          <div class="project-head">
+            <span class="project-badge">RAG · Agent-assisted analysis</span>
+            <h3 class="project-title">RAG decision support for intelligence teams</h3>
+            <span class="project-meta">Public sector</span>
+          </div>
+          <p class="project-summary">
+            An LLM-integrated FastAPI service backed by a <strong>FAISS vector database</strong>, plus an
+            agent-based approach to streamline intelligence operations and improve analytical precision.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: source data in PostgreSQL is embedded into a FAISS vector database, an LLM with LangChain retrieves from it, and a FastAPI service returns answers.">
+            <div class="arch-node is-data">
+              <span class="arch-step">01</span>
+              <span class="arch-name">Source data</span>
+              <span class="arch-desc">PostgreSQL</span>
+            </div>
+            <div class="arch-arrow"><span>embed</span></div>
+            <div class="arch-node is-data">
+              <span class="arch-step">02</span>
+              <span class="arch-name">FAISS</span>
+              <span class="arch-desc">Vector database</span>
+            </div>
+            <div class="arch-arrow is-both"><span>retrieve</span></div>
+            <div class="arch-node is-ai">
+              <span class="arch-step">03</span>
+              <span class="arch-name">LLM + agent</span>
+              <span class="arch-desc">LangChain</span>
+            </div>
+            <div class="arch-arrow"><span>answer</span></div>
+            <div class="arch-node is-edge">
+              <span class="arch-step">04</span>
+              <span class="arch-name">FastAPI service</span>
+              <span class="arch-desc">Dockerized</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">LangChain</span><span class="tag">PostgreSQL</span><span class="tag">FastAPI</span><span class="tag">Docker</span>
+          </div>
+        </article>
+
+        <!-- LLM memory -->
+        <article class="project-card" data-kind="chatbot">
+          <div class="project-head">
+            <span class="project-badge">LLM memory · Multi-store pipeline</span>
+            <h3 class="project-title">LLM integration with short- and long-term memory</h3>
+            <span class="project-meta">Public sector</span>
+          </div>
+          <p class="project-summary">
+            An LLM-integration architecture with <strong>short- and long-term memory</strong>, on a data
+            pipeline spanning <strong>relational, graph, and vector stores</strong>, deployed on AWS
+            against controlled data sources.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: data sources on AWS flow through a Python middleware API into a pipeline spanning PostgreSQL, Neo4j and FAISS, used by an LLM with short- and long-term memory.">
+            <div class="arch-node is-edge">
+              <span class="arch-step">01</span>
+              <span class="arch-name">Data sources</span>
+              <span class="arch-desc">AWS-hosted pipelines</span>
+            </div>
+            <div class="arch-arrow"><span>ingest</span></div>
+            <div class="arch-node">
+              <span class="arch-step">02</span>
+              <span class="arch-name">Middleware API</span>
+              <span class="arch-desc">Python · inter-service data exchange</span>
+            </div>
+            <div class="arch-arrow"><span>load</span></div>
+            <div class="arch-node is-data">
+              <span class="arch-step">03</span>
+              <span class="arch-name">Data pipeline</span>
+              <ul class="arch-fan" aria-hidden="true"><li>Postgres</li><li>Neo4j</li><li>FAISS</li></ul>
+            </div>
+            <div class="arch-arrow is-both"><span>recall</span></div>
+            <div class="arch-node is-ai">
+              <span class="arch-step">04</span>
+              <span class="arch-name">LLM</span>
+              <span class="arch-desc">Short- and long-term memory</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">LLM memory</span><span class="tag">PostgreSQL</span><span class="tag">Neo4j</span><span class="tag">FAISS</span><span class="tag">AWS</span><span class="tag">Docker</span>
+          </div>
+        </article>
+
+        <!-- Multimodal KM -->
+        <article class="project-card" data-kind="rag">
+          <div class="project-head">
+            <span class="project-badge">Vector DB · Multimodal ingestion · GCP</span>
+            <h3 class="project-title">Knowledge management over PDFs, audio, and photos</h3>
+            <span class="project-meta">Public sector</span>
+          </div>
+          <p class="project-summary">
+            A PostgreSQL-backed ingestion engine for large-scale ETL across PDFs, audio, and photos,
+            with a <strong>Chroma vector database</strong> and an LLM trained and deployed on GCP, kept within budget.
+          </p>
+
+          <div class="arch" role="img" aria-label="Architecture: PDFs, audio and photos flow through a PostgreSQL-backed ETL engine into a Chroma vector database on GCP, alongside an LLM on GCP.">
+            <div class="arch-node is-data">
+              <span class="arch-step">01</span>
+              <span class="arch-name">Mixed media</span>
+              <ul class="arch-fan" aria-hidden="true"><li>PDF</li><li>audio</li><li>photo</li></ul>
+            </div>
+            <div class="arch-arrow"><span>ETL</span></div>
+            <div class="arch-node">
+              <span class="arch-step">02</span>
+              <span class="arch-name">Ingestion engine</span>
+              <span class="arch-desc">PostgreSQL-backed</span>
+            </div>
+            <div class="arch-arrow"><span>embed</span></div>
+            <div class="arch-node is-data">
+              <span class="arch-step">03</span>
+              <span class="arch-name">Chroma</span>
+              <span class="arch-desc">Vector DB on GCP</span>
+            </div>
+            <div class="arch-arrow is-both"><span>query</span></div>
+            <div class="arch-node is-ai">
+              <span class="arch-step">04</span>
+              <span class="arch-name">LLM on GCP</span>
+              <span class="arch-desc">Trained &amp; deployed</span>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Chroma</span><span class="tag">GCP</span><span class="tag">PostgreSQL</span><span class="tag">ETL</span><span class="tag">LLM</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="project-empty" hidden>No projects match that filter.</p>
+    </div>
+  </section>
+  </div>
+
+  <div class="page-section" id="education">
+  <header class="page-header">
+    <div class="container">
+      <div class="page-header-tag">
+        <span class="page-header-tag-num">03 / 05</span>
+        <span class="section-label">Academic</span>
+      </div>
+      <h2 class="page-header-title">Education</h2>
+      <p class="page-header-sub">Engineering, economics, and financial engineering. Graduate work across four institutions, with active doctoral research at GWU.</p>
+      <div class="page-header-meta">
+        <div class="page-header-meta-item">
+          <span class="label">Doctorate</span>
+          <span class="value">In progress · GWU</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Completed degrees</span>
+          <span class="value">4 across 4 institutions</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Disciplines</span>
+          <span class="value">AI/ML · Economics · Financial Engineering</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section-top">
+    <div class="container">
+
+      <!-- Doctoral thesis spotlight -->
+      <article class="thesis-spotlight">
+        <div class="thesis-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Active doctoral research</span>
+        </div>
+        <h2 class="thesis-title">Economic Determinants of AI Enterprise Integration</h2>
+        <p class="thesis-school">Doctorate of Engineering · Artificial Intelligence &amp; Machine Learning</p>
+        <p class="thesis-school-name">George Washington University</p>
+        <div class="thesis-body">
+          <p>
+            My doctoral thesis investigates the <strong>economic conditions under which firms
+            translate AI capability into measurable enterprise value.</strong> Most adoption
+            research frames AI in narrow technical or productivity-curve terms; my work goes
+            deeper — into the capital structures, organizational design choices, governance
+            constraints, and incentive systems that separate firms that capture economic
+            return from those that don't.
+          </p>
+          <p>
+            The research bridges three threads of my prior training: <strong>economics</strong>
+            (causal identification of returns), <strong>financial engineering</strong>
+            (modeling investment under uncertainty), and <strong>applied AI engineering</strong>
+            (what enterprise-grade deployment actually costs and yields). The output is a
+            framework for AI investment that treats capability as a function of operational
+            and economic constraints, not just model quality.
+          </p>
+        </div>
+        <div class="thesis-meta">
+          <div class="thesis-meta-item">
+            <span class="thesis-meta-label">Status</span>
+            <span class="thesis-meta-value">In progress</span>
+          </div>
+          <div class="thesis-meta-item">
+            <span class="thesis-meta-label">Discipline</span>
+            <span class="thesis-meta-value">AI &amp; ML · Economics</span>
+          </div>
+          <div class="thesis-meta-item">
+            <span class="thesis-meta-label">Institution</span>
+            <span class="thesis-meta-value">GWU</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Completed degrees -->
+      <div class="section-header" style="margin-top: 80px;">
+        <span class="section-label">Completed degrees</span>
+        <h2 class="section-title">Academic foundation</h2>
+      </div>
+
+      <div class="edu-grid">
+        <article class="edu-card">
+          <div class="edu-status edu-status-complete">Completed · 2024</div>
+          <h3 class="edu-degree">Certificate</h3>
+          <p class="edu-field">Strategic Communications</p>
+          <p class="edu-school">Massachusetts Institute of Technology</p>
+          <p class="edu-year">2024</p>
+        </article>
+
+        <article class="edu-card">
+          <div class="edu-status edu-status-complete">Completed · 2023</div>
+          <h3 class="edu-degree">M.A. Economics</h3>
+          <p class="edu-school">University of Texas at San Antonio</p>
+          <p class="edu-year">2023</p>
+        </article>
+
+        <article class="edu-card">
+          <div class="edu-status edu-status-complete">Completed · 2019</div>
+          <h3 class="edu-degree">M.S. Financial Engineering</h3>
+          <p class="edu-school">Stevens Institute of Technology</p>
+          <p class="edu-year">2019</p>
+        </article>
+
+        <article class="edu-card">
+          <div class="edu-status edu-status-complete">Completed · 2017</div>
+          <h3 class="edu-degree">B.S.B.A. Economics &amp; Finance</h3>
+          <p class="edu-school">Rider University</p>
+          <p class="edu-year">2017</p>
+        </article>
+      </div>
+
+      <div class="page-cta">
+        <a href="#credentials" class="btn btn-ghost">
+          <span>Credentials &amp; awards</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#experience" class="btn btn-ghost">
+          <span>Career timeline</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="page-section" id="credentials">
+  <header class="page-header">
+    <div class="container">
+      <div class="page-header-tag">
+        <span class="page-header-tag-num">04 / 05</span>
+        <span class="section-label">Proof</span>
+      </div>
+      <h2 class="page-header-title">Credentials</h2>
+      <p class="page-header-sub">Certifications, hackathon wins, and leadership programs.</p>
+      <div class="page-header-meta">
+        <div class="page-header-meta-item">
+          <span class="label">Certifications</span>
+          <span class="value">Neo4j Professional · Graph Data Science</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Hackathon wins</span>
+          <span class="value">CDAO bits2effects · DoD Bravo-Opana</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Clearance</span>
+          <span class="value">TS/SCI</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section-top">
+    <div class="container">
+
+      <div class="creds-block">
+        <h2 class="creds-heading">Certifications</h2>
+        <div class="cred-grid">
+          <article class="cred-card">
+            <div class="cred-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="m9 14-1 8 4-3 4 3-1-8"/></svg>
+            </div>
+            <h3>Neo4j Certified Professional</h3>
+            <p class="cred-issuer">Neo4j</p>
+            <p class="cred-date">March 2024</p>
+          </article>
+          <article class="cred-card">
+            <div class="cred-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="m9 14-1 8 4-3 4 3-1-8"/></svg>
+            </div>
+            <h3>Neo4j Graph Data Science</h3>
+            <p class="cred-issuer">Neo4j</p>
+            <p class="cred-date">March 2024</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="creds-block">
+        <h2 class="creds-heading">Awards &amp; hackathons</h2>
+        <div class="cred-grid">
+          <article class="cred-card cred-card-award">
+            <div class="cred-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </div>
+            <h3>CDAO bits2effects Hackathon</h3>
+            <p class="cred-issuer">DoD Chief Digital &amp; AI Office</p>
+            <p class="cred-date">February 2024</p>
+            <p class="cred-detail">Deployed 2 full-stack applications onto a secret enclave — generating firm partnerships and mapped USSF AI use cases.</p>
+          </article>
+
+          <article class="cred-card cred-card-award">
+            <div class="cred-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </div>
+            <h3>DoD Bravo-Opana Hackathon</h3>
+            <p class="cred-issuer">Department of Defense</p>
+            <p class="cred-date">March 2023</p>
+            <p class="cred-detail">
+              <strong>1st place — User Interface.</strong>
+              <strong>2nd place — Innovations &amp; Logistics.</strong>
+              Built a UI and LLM running on an air-gapped classified network.
+            </p>
+          </article>
+
+          <article class="cred-card cred-card-award">
+            <div class="cred-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>AI Technical Experience Group — Mentor</h3>
+            <p class="cred-issuer">Booz Allen Hamilton</p>
+            <p class="cred-date">April — September 2023</p>
+            <p class="cred-detail">Paired with a junior engineer to develop firm-wide AI capabilities; capstone computer-vision project delivered to senior leadership.</p>
+          </article>
+
+          <article class="cred-card cred-card-award">
+            <div class="cred-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>AI Lead — Summer Internship</h3>
+            <p class="cred-issuer">Booz Allen Hamilton</p>
+            <p class="cred-date">June — August 2023</p>
+            <p class="cred-detail">Mentored 5 interns through a Python full-stack build: Docker, PostgreSQL, FAISS, Streamlit, FastAPI.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="page-cta">
+        <a href="#experience" class="btn btn-ghost">
+          <span>Career timeline</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">
+          <span>Get in touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  </div>
+
+  <div class="page-section" id="contact">
+  <header class="page-header">
+    <div class="container">
+      <div class="page-header-tag">
+        <span class="page-header-tag-num">05 / 05</span>
+        <span class="section-label">Talk</span>
+      </div>
+      <h2 class="page-header-title">Outcome <span class="page-header-title-accent">as a Service</span></h2>
+      <p class="page-header-sub">I deliver <strong>products over PowerPoints</strong>. AI can be <strong>scalable and affordable</strong> when done correctly.</p>
+      <div class="page-header-meta">
+        <div class="page-header-meta-item">
+          <span class="label">Best reach</span>
+          <span class="value">Email · Phone</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Time zone</span>
+          <span class="value">Central · San Antonio, TX</span>
+        </div>
+        <div class="page-header-meta-item">
+          <span class="label">Topics</span>
+          <span class="value">Voice AI · Agentic systems · Secure deployment</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section-top">
+    <div class="container">
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:enzopbonelli@gmail.com">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 5L2 7"/></svg>
+          </div>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">enzopbonelli@gmail.com</span>
+        </a>
+
+        <a class="contact-card" href="tel:+12107652968">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          </div>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">(210) 765-2968</span>
+        </a>
+
+        <div class="contact-card contact-card-static">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span class="contact-label">Location</span>
+          <span class="contact-value">San Antonio, TX</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
 
   <footer class="footer">
-    <div class="container footer-container">
-      <div>© <span id="year"></span> Enzo Bonelli</div>
-      <div class="footer-meta">Built with HTML, CSS, JS · enzobonelli.com</div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-col-title">Enzo Bonelli</span>
+          <span class="footer-brand-name">Director of AI Engineering</span>
+          <span class="footer-brand-role">
+            Applied AI leader. Federal + commercial. Voice AI, agentic systems,
+            air-gapped enclaves to enterprise.
+          </span>
+          <span class="footer-brand-tagline">/ Outcome as a Service</span>
+        </div>
+
+        <div>
+          <span class="footer-col-title">Site</span>
+          <div class="footer-links">
+            <a href="#top">Home</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#credentials">Credentials</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <span class="footer-col-title">Contact</span>
+          <div class="footer-contact">
+            <a href="https://www.linkedin.com/in/enzobonelli/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <span>linkedin.com/in/enzobonelli</span>
+            </a>
+            <a href="mailto:enzopbonelli@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 5L2 7"/></svg>
+              <span>enzopbonelli@gmail.com</span>
+            </a>
+            <a href="tel:+12107652968">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+              <span>(210) 765-2968</span>
+            </a>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>San Antonio, TX</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Enzo Bonelli · enzobonelli.com</span>
+        <span class="footer-bottom-meta">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Built with HTML, CSS, JS</span>
+        </span>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20261111g"></script>
+  <script src="fireflies.js?v=20261111g"></script>
+  <script src="fx.js?v=20261111g"></script>
+  <script src="hero.js?v=20261111g"></script>
 </body>
 </html>
