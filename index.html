@@ -26,10 +26,11 @@
   <meta name="theme-color" content="#0a1630" />
   <script>
     /* Set theme before first paint. Night is the brand default; a saved
-       choice ('eb-theme') wins. script.js owns the toggle. */
+       choice for this tab session ('eb-theme' in sessionStorage) wins;
+       every new visit starts on the firefly theme. script.js owns the toggle. */
     (function () {
       var t = 'dark';
-      try { var s = localStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
+      try { localStorage.removeItem('eb-theme'); var s = sessionStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
       document.documentElement.dataset.theme = t;
       var m = document.querySelector('meta[name="theme-color"]');
       if (m) m.setAttribute('content', t === 'light' ? '#0a0d14' : '#0a1630');
@@ -41,9 +42,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261112b" />
-  <link rel="stylesheet" href="fx.css?v=20261112b" />
-  <link rel="stylesheet" href="hero.css?v=20261112b" />
+  <link rel="stylesheet" href="styles.css?v=20261112c" />
+  <link rel="stylesheet" href="fx.css?v=20261112c" />
+  <link rel="stylesheet" href="hero.css?v=20261112c" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1747,9 +1748,9 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20261112b"></script>
-  <script src="fireflies.js?v=20261112b"></script>
-  <script src="fx.js?v=20261112b"></script>
-  <script src="hero.js?v=20261112b"></script>
+  <script src="script.js?v=20261112c"></script>
+  <script src="fireflies.js?v=20261112c"></script>
+  <script src="fx.js?v=20261112c"></script>
+  <script src="hero.js?v=20261112c"></script>
 </body>
 </html>

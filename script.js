@@ -31,7 +31,8 @@
   }
 
   // --- Theme toggle (night default; contract shared with other modules) ---
-  // <html data-theme="dark|light">, persisted in localStorage 'eb-theme',
+  // <html data-theme="dark|light">, persisted for the tab session in sessionStorage 'eb-theme'
+  // (every new visit starts on the firefly theme),
   // and an 'eb-themechange' event on window with detail.theme.
   const root = document.documentElement;
   const themeBtn = $('#theme-toggle');
@@ -47,7 +48,7 @@
   };
   const setTheme = (theme) => {
     root.dataset.theme = theme;
-    try { localStorage.setItem('eb-theme', theme); } catch (e) { /* storage blocked */ }
+    try { sessionStorage.setItem('eb-theme', theme); localStorage.removeItem('eb-theme'); } catch (e) { /* storage blocked */ }
     syncThemeUI(theme);
     window.dispatchEvent(new CustomEvent('eb-themechange', { detail: { theme } }));
   };
