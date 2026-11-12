@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Air-gapped multi-agent system for tax &amp; financial data — Enzo Bonelli</title>
+  <meta name="description" content="How an air-gapped, five-agent system turns tax and financial records into explainable answers with GraphRAG on a Neo4j knowledge graph." />
+  <link rel="canonical" href="https://enzobonelli.com/projects/graphrag-tax/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Enzo Bonelli" />
+  <meta property="og:title" content="Air-gapped multi-agent system for tax &amp; financial data" />
+  <meta property="og:description" content="How an air-gapped, five-agent system turns tax and financial records into explainable answers with GraphRAG on a Neo4j knowledge graph." />
+  <meta property="og:url" content="https://enzobonelli.com/projects/graphrag-tax/" />
+  <meta property="og:image" content="https://enzobonelli.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a1630" />
+  <script>
+    /* Same rule as the homepage: night is the default; a choice saved for
+       this tab session ('eb-theme' in sessionStorage) wins. */
+    (function () {
+      var t = 'dark';
+      try { localStorage.removeItem('eb-theme'); var s = sessionStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
+      document.documentElement.dataset.theme = t;
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', t === 'light' ? '#0a0d14' : '#0a1630');
+    })();
+  </script>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../scenes/graphrag-scene.css" />
+  <link rel="stylesheet" href="../project.css" />
+</head>
+<body class="pj" data-scene="GraphragScene" data-scene-alt="IsoScene">
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <a class="pj-skip" href="#pj-explain">Skip to the explanation</a>
+
+  <header class="pj-top">
+    <a class="pj-brand" href="../../index.html" aria-label="Enzo Bonelli, home">
+      <span class="pj-brand-mark" aria-hidden="true">EB</span>
+      <span class="pj-brand-name">Enzo Bonelli</span>
+    </a>
+    <a class="pj-all" href="../../index.html#projects">&larr; All projects</a>
+    <nav class="pj-reach" aria-label="Contact">
+      <a href="mailto:enzopbonelli@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/enzobonelli/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main class="pj-main" id="main">
+    <header class="pj-head">
+      <h1 class="pj-title" id="pj-title">Air-gapped multi-agent system for tax &amp; financial data</h1>
+      <p class="pj-meta">In production, 2025–2026</p>
+    </header>
+
+    <section class="pj-stage" aria-label="Architecture, built step by step">
+      <div class="pj-scene" id="pj-scene"></div>
+    </section>
+
+    <p class="pj-summary">Tax and financial records are full of personal data, and the answers drawn from them have to be defensible. This system keeps every document inside an isolated environment, organizes it into a Neo4j knowledge graph, and lets a five-agent system reason over that graph &mdash; so every output arrives with the lineage behind it.</p>
+
+    <div class="pj-explain" id="pj-explain">
+        <ol class="pj-steps">
+          <li class="pj-step" id="pj-step-1" data-name="The boundary">
+            <p class="pj-step-label"><span class="pj-step-num">Step 1 of 5</span> <span aria-hidden="true">·</span> The boundary</p>
+            <h2 tabindex="-1">Nothing leaves the environment.</h2>
+            <p>Every service runs inside an air-gapped boundary. Sensitive records, PII included, are processed where they live, with no connection to the outside.</p>
+            <ul class="pj-chips"><li>Air-gapped</li><li>Docker</li><li>PII</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-2" data-name="Ingest">
+            <p class="pj-step-label"><span class="pj-step-num">Step 2 of 5</span> <span aria-hidden="true">·</span> Ingest</p>
+            <h2 tabindex="-1">Documents enter through ingestion services.</h2>
+            <p>Dockerized FastAPI microservices take in tax and financial records and load them into the knowledge graph.</p>
+            <ul class="pj-chips"><li>FastAPI</li><li>Python</li><li>Docker</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-3" data-name="Build the graph">
+            <p class="pj-step-label"><span class="pj-step-num">Step 3 of 5</span> <span aria-hidden="true">·</span> Build the graph</p>
+            <h2 tabindex="-1">Records become a connected knowledge graph.</h2>
+            <p>The data is stored in Neo4j as connected entities, so each fact stays linked to where it came from. That lineage is what makes the reasoning traceable later.</p>
+            <ul class="pj-chips"><li>Neo4j</li><li>GraphRAG</li><li>Lineage</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-4" data-name="Agents query the graph">
+            <p class="pj-step-label"><span class="pj-step-num">Step 4 of 5</span> <span aria-hidden="true">·</span> Agents query the graph</p>
+            <h2 tabindex="-1">Five agents reason over the graph.</h2>
+            <p>A five-agent architecture works through the records, querying the graph for context and citing it for the conclusions it draws.</p>
+            <ul class="pj-chips"><li>Multi-agent</li><li>GraphRAG</li><li>FastAPI</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-5" data-name="Explainable answer">
+            <p class="pj-step-label"><span class="pj-step-num">Step 5 of 5</span> <span aria-hidden="true">·</span> Explainable answer</p>
+            <h2 tabindex="-1">Every answer shows its work.</h2>
+            <p>The agents deliver their output to a vanilla JS interface, where each answer can be traced back through the graph to the records behind it.</p>
+            <ul class="pj-chips"><li>Explainable output</li><li>Vanilla JS</li><li>Lineage</li></ul>
+          </li>
+          <li class="pj-step pj-complete" id="pj-complete" data-name="The full system">
+            <p class="pj-step-label"><span class="pj-step-num">Complete</span> <span aria-hidden="true">·</span> The full system</p>
+            <h2 tabindex="-1">Isolated, traceable, explainable.</h2>
+            <p>Sensitive financial data stays inside the boundary, and every output can be followed back to its source. GraphRAG on Neo4j gives reviewers the reasoning, not just the result.</p>
+            <ul class="pj-chips" aria-label="Full tech stack"><li>Multi-agent</li><li>GraphRAG</li><li>Neo4j</li><li>FastAPI</li><li>Docker</li><li>Python</li><li>Vanilla JS</li><li>Air-gapped</li></ul>
+            <div class="pj-onward">
+              <a class="btn btn-primary" href="../public-sector-graphrag/" aria-label="Next project: Agentic GraphRAG on secure networks" title="Agentic GraphRAG on secure networks">Next project &rarr;</a>
+              <a class="btn btn-ghost" href="../../index.html#projects">&larr; All projects</a>
+            </div>
+          </li>
+        </ol>
+        <p class="sr-only" id="pj-live" aria-live="polite"></p>
+      </div>
+
+      <nav class="pj-controls" aria-label="Step controls">
+        <button type="button" class="pj-btn pj-back" aria-label="Previous step"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7.4 3.3 2.7 8l4.7 4.7 1.1-1.1-2.9-2.8H14V7.2H5.6l2.9-2.8z"/></svg><span class="pj-btn-text">Back</span></button>
+        <ol class="pj-bar">
+          <li><button type="button" class="pj-seg" data-goto="0" aria-label="Step 1: The boundary"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">1</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="1" aria-label="Step 2: Ingest"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">2</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="2" aria-label="Step 3: Build the graph"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">3</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="3" aria-label="Step 4: Agents query the graph"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">4</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="4" aria-label="Step 5: Explainable answer"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">5</span></button></li>
+        </ol>
+        <button type="button" class="pj-btn pj-play" aria-pressed="false" aria-label="Play"><svg class="pj-ico-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13.5 8z"/></svg><svg class="pj-ico-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg></button>
+        <button type="button" class="pj-btn pj-next" aria-label="Next step"><span class="pj-btn-text">Next</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.6 3.3 13.3 8l-4.7 4.7-1.1-1.1 2.9-2.8H2V7.2h8.4L7.5 4.4z"/></svg></button>
+        <p class="pj-keys" aria-hidden="true"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>Space</kbd> to move through the steps</p>
+      </nav>
+  </main>
+
+  <script src="../../fireflies.js"></script>
+  <script src="../../scenes/graphrag-scene.js" defer></script>
+  <script src="../project.js" defer></script>
+</body>
+</html>

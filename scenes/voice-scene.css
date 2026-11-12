@@ -1,0 +1,171 @@
+/* ============================================================
+   VoiceScene — isometric real-time voice agent (pairs with voice-scene.js)
+   Colours follow the site theme tokens; hex values are fallbacks for
+   the default "firefly night" palette. Shading matches IsoScene: one
+   base colour (--f) per solid -> lit top, mid left, shaded right.
+   ============================================================ */
+.vs {
+  --vs-a: var(--accent, #c6f432);
+  --vs-b: var(--accent-3, #7dd3fc);
+  --vs-c: var(--accent-2, #f5c542);
+  --vs-text: var(--text, #e8eefc);
+  --vs-muted: var(--text-muted, #a9b6d3);
+  --vs-dim: var(--text-dim, #7d8db0);
+  --vs-deep: var(--bg-deep, #060e22);
+  --vs-surface: var(--bg-surface, #0f1f3d);
+  --vs-elev: var(--bg-elevated, #13264a);
+  --vs-on: var(--on-accent, #0a1630);
+  --vs-sans: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  --vs-ease: var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.vs-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  font-family: var(--vs-sans);
+}
+
+/* gradient stops */
+.vs .vs-st-a { stop-color: var(--vs-a); }
+.vs .vs-st-b { stop-color: var(--vs-b); }
+.vs .vs-st-c { stop-color: var(--vs-c); }
+.vs .vs-st-t { stop-color: var(--vs-text); }
+.vs .vs-st-plate0 { stop-color: #0f2042; stop-color: color-mix(in srgb, var(--vs-surface) 90%, #ffffff 5%); }
+.vs .vs-st-plate1 { stop-color: #0b1833; stop-color: color-mix(in srgb, var(--vs-surface) 82%, #000000 18%); }
+
+/* ---------- floor plate ---------- */
+.vs .vs-plate { stroke: rgba(255, 255, 255, 0.10); stroke-width: 1; }
+.vs .vs-plate-side.vs-l { fill: #091530; fill: color-mix(in srgb, var(--vs-surface) 72%, #000 28%); }
+.vs .vs-plate-side.vs-r { fill: #071026; fill: color-mix(in srgb, var(--vs-surface) 58%, #000 42%); }
+.vs .vs-plate-rim { fill: none; stroke: rgba(255, 255, 255, 0.16); stroke-width: 1; }
+.vs .vs-grid { fill: none; stroke: rgba(169, 182, 211, 0.07); stroke-width: 1; }
+.vs .vs-ring { fill: none; stroke: var(--vs-a); stroke-width: 1.4; }
+
+/* ---------- self-hosted boundary ---------- */
+.vs .vs-bound-fill { fill: var(--vs-a); fill-opacity: 0.03; }
+.vs .vs-bound-line { fill: none; stroke: var(--vs-a); stroke-opacity: 0.6; stroke-width: 1.4; stroke-dasharray: 7 6; }
+.vs .vs-floortext { fill: var(--vs-a); fill-opacity: 0.75; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
+
+/* ---------- wires ---------- */
+.vs .vs-wire { fill: none; stroke: rgba(169, 182, 211, 0.22); stroke-width: 1.4; stroke-linejoin: round; }
+.vs .vs-wire-on { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; opacity: 0; }
+.vs .vs-w-inb { stroke: var(--vs-a); }
+.vs .vs-w-tx { stroke: var(--vs-b); }
+.vs .vs-w-rt,
+.vs .vs-w-out { stroke: var(--vs-c); }
+.vs .vs-loop { fill: none; stroke: var(--vs-text); stroke-opacity: 0.55; stroke-width: 1; stroke-dasharray: 2 7; stroke-linecap: round; opacity: 0; }
+
+/* ---------- solids ---------- */
+.vs .vs-block { --f: var(--vs-elev); --k: var(--vs-text); }
+.vs .vs-b-tel { --f: #172c54; --f: color-mix(in srgb, var(--vs-elev) 92%, var(--vs-a) 5%); --k: var(--vs-a); }
+.vs .vs-b-stt { --f: #15305a; --f: color-mix(in srgb, var(--vs-elev) 90%, var(--vs-b) 8%); --k: var(--vs-b); }
+.vs .vs-b-llm { --f: #1b3260; --f: color-mix(in srgb, var(--vs-elev) 88%, var(--vs-a) 7%); --k: var(--vs-a); }
+.vs .vs-b-tts { --f: #1c2d52; --f: color-mix(in srgb, var(--vs-elev) 90%, var(--vs-c) 8%); --k: var(--vs-c); }
+.vs .vs-b-caller { --f: #10213f; --f: color-mix(in srgb, var(--vs-surface) 85%, #ffffff 6%); --k: var(--vs-a); }
+.vs .vs-b-phone { --f: #1d2f55; --f: color-mix(in srgb, var(--vs-elev) 85%, #ffffff 8%); --k: var(--vs-a); }
+
+.vs .vs-ao { fill: #000; fill-opacity: 0.32; }
+.vs .vs-face-t,
+.vs .vs-face-l,
+.vs .vs-face-r { stroke: rgba(255, 255, 255, 0.07); stroke-width: 1; stroke-linejoin: round; }
+.vs .vs-face-t { fill: #2a3d63; fill: color-mix(in srgb, var(--f) 80%, #ffffff 20%); stroke: rgba(255, 255, 255, 0.16); }
+.vs .vs-face-l { fill: var(--f); }
+.vs .vs-face-r { fill: #0d1b36; fill: color-mix(in srgb, var(--f) 70%, #000000 30%); }
+.vs .vs-face-shade { pointer-events: none; }
+.vs .vs-tint { fill: var(--k); opacity: 0; transition: opacity 300ms var(--vs-ease); }
+.vs .vs-edge { fill: none; stroke: var(--k); stroke-width: 1.4; stroke-linejoin: round; opacity: 0; transition: opacity 300ms var(--vs-ease); }
+.vs .vs-block.is-on .vs-edge { opacity: 0.3; }
+.vs .vs-block.is-lit .vs-edge { opacity: 0.95; }
+.vs .vs-block.is-lit .vs-tint { opacity: 0.1; }
+.vs .vs-glow { opacity: 0; }
+
+/* caller + phone */
+.vs .vs-pad { fill: none; stroke: rgba(255, 255, 255, 0.10); stroke-width: 1; stroke-dasharray: 3 4; }
+.vs .vs-screen { fill: #0a1630; fill: color-mix(in srgb, var(--vs-deep) 80%, var(--vs-a) 8%); stroke: var(--vs-a); stroke-opacity: 0.45; stroke-width: 1; }
+.vs .vs-screen-line { stroke: var(--vs-a); stroke-opacity: 0.7; stroke-width: 1.6; stroke-linecap: round; }
+
+/* telephony details */
+.vs .vs-vent { stroke: rgba(255, 255, 255, 0.13); stroke-width: 1.6; stroke-linecap: round; }
+.vs .vs-port { stroke: var(--vs-deep); stroke-width: 4; stroke-linecap: round; }
+.vs .vs-led { fill: var(--vs-a); }
+.vs .vs-led-b { fill: var(--vs-b); }
+.vs .vs-vad-ring { fill: none; stroke: var(--vs-b); stroke-width: 1.2; }
+.vs .vs-antenna { stroke: var(--vs-muted); stroke-width: 2; stroke-linecap: round; }
+.vs .vs-antenna-base { fill: var(--vs-deep); }
+.vs .vs-antenna-tip { fill: var(--vs-a); }
+
+/* top-face glyphs */
+.vs .vs-glyph { fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.vs .vs-glyph-b { stroke: var(--vs-b); stroke-opacity: 0.85; }
+.vs .vs-glyph-frame { fill: rgba(0, 0, 0, 0.18); stroke: rgba(255, 255, 255, 0.10); stroke-width: 1; }
+.vs .vs-bar { fill: var(--vs-c); }
+
+/* LLM core + checklist */
+.vs .vs-core-slot { stroke: var(--vs-a); stroke-opacity: 0.6; stroke-width: 1; }
+.vs .vs-core-lines { stroke: rgba(6, 14, 34, 0.45); stroke-width: 1; }
+.vs .vs-core-top { fill: var(--vs-a); fill-opacity: 0.08; stroke: var(--vs-a); stroke-opacity: 0.55; stroke-width: 1; }
+.vs .vs-check { opacity: 0; }
+.vs .vs-check-box { fill: var(--vs-a); fill-opacity: 0.16; stroke: var(--vs-a); stroke-width: 1.1; }
+.vs .vs-check-tick { fill: none; stroke: var(--vs-a); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.vs .vs-check-text { fill: var(--vs-text); font-size: 12.5px; font-weight: 600; }
+
+/* orbit */
+.vs .vs-orbit { opacity: 0; }
+.vs .vs-orbit-ring { fill: none; stroke: var(--vs-a); stroke-opacity: 0.35; stroke-width: 1; stroke-dasharray: 2 5; }
+
+/* packets */
+.vs .vs-ff,
+.vs .vs-chip { opacity: 0; }
+.vs .vs-core-a,
+.vs .vs-core-c { fill: #fffbe6; }
+.vs .vs-chip-b { fill: var(--vs-b); }
+.vs .vs-chip-c { fill: var(--vs-c); }
+.vs .vs-chip-line { fill: var(--vs-on); fill-opacity: 0.7; }
+
+/* ---------- labels ---------- */
+.vs .vs-leader { fill: none; stroke: var(--vs-muted); stroke-opacity: 0.55; stroke-width: calc(var(--vs-k, 1) * 1px); }
+.vs .vs-leader-dot { fill: var(--vs-text); }
+.vs .vs-title {
+  fill: var(--vs-text);
+  font-size: calc(var(--vs-k, 1) * 13px);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  transition: fill 300ms var(--vs-ease);
+}
+.vs .vs-sub { fill: var(--vs-muted); font-size: calc(var(--vs-k, 1) * 11.5px); }
+.vs .vs-label.is-lit .vs-title { fill: var(--vs-a); }
+.vs .vs-l-stt.is-lit .vs-title { fill: var(--vs-b); }
+.vs .vs-l-tts.is-lit .vs-title { fill: var(--vs-c); }
+.vs .vs-l-loop .vs-title { font-size: calc(var(--vs-k, 1) * 11.5px); fill: var(--vs-muted); font-weight: 500; }
+.vs .vs-legend-text { fill: var(--vs-muted); font-size: 11.5px; }
+
+/* compact (< 560px container): drop minor detail and subs, labels ~11px */
+.vs.is-compact .vs-minor,
+.vs.is-compact .vs-sub { display: none; }
+.vs.is-compact .vs-title { font-size: calc(var(--vs-k, 1) * 11px); }
+
+/* overview (homepage card): finished loop, title-only labels ~12px */
+.vs.is-overview .vs-minor,
+.vs.is-overview .vs-sub,
+.vs.is-overview .vs-check-text { display: none; }
+.vs.is-overview .vs-title { font-size: calc(var(--vs-k, 1) * 12px); fill: var(--vs-text); }
+.vs.is-overview .vs-leader { stroke-opacity: 0.45; }
+.vs.is-overview .vs-block.is-on .vs-edge { opacity: 0.5; }
+.vs.is-overview .vs-block.is-on .vs-tint { opacity: 0.05; }
+
+/* reduced motion: still frames, instant state changes */
+.vs.is-reduced * { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .vs * { transition: none !important; }
+}
+
+/* ---------- added: veils, elevated arcs, handset ---------- */
+.vs .vs-veil { fill: #0d1c39; fill: color-mix(in srgb, var(--vs-surface) 92%, #ffffff 3%); pointer-events: none; }
+.vs .vs-arc { stroke-dasharray: 2 4; stroke: rgba(169, 182, 211, 0.3); }
+.vs .vs-handset { fill: var(--vs-a); fill-opacity: 0.85; }

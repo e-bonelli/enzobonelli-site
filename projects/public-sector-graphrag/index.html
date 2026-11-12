@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Agentic GraphRAG for air-gapped LLM capability — Enzo Bonelli</title>
+  <meta name="description" content="How an agentic RAG and GraphRAG architecture brings LLM capability into accredited, air-gapped government networks (IL4+), built on a knowledge-service data model." />
+  <link rel="canonical" href="https://enzobonelli.com/projects/public-sector-graphrag/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Enzo Bonelli" />
+  <meta property="og:title" content="Agentic GraphRAG for air-gapped LLM capability" />
+  <meta property="og:description" content="How an agentic RAG and GraphRAG architecture brings LLM capability into accredited, air-gapped government networks (IL4+), built on a knowledge-service data model." />
+  <meta property="og:url" content="https://enzobonelli.com/projects/public-sector-graphrag/" />
+  <meta property="og:image" content="https://enzobonelli.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a1630" />
+  <script>
+    /* Same rule as the homepage: night is the default; a choice saved for
+       this tab session ('eb-theme' in sessionStorage) wins. */
+    (function () {
+      var t = 'dark';
+      try { localStorage.removeItem('eb-theme'); var s = sessionStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
+      document.documentElement.dataset.theme = t;
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', t === 'light' ? '#0a0d14' : '#0a1630');
+    })();
+  </script>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../scenes/public-sector-scene.css" />
+  <link rel="stylesheet" href="../project.css" />
+</head>
+<body class="pj" data-scene="PublicSectorScene">
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <a class="pj-skip" href="#pj-explain">Skip to the explanation</a>
+
+  <header class="pj-top">
+    <a class="pj-brand" href="../../index.html" aria-label="Enzo Bonelli, home">
+      <span class="pj-brand-mark" aria-hidden="true">EB</span>
+      <span class="pj-brand-name">Enzo Bonelli</span>
+    </a>
+    <a class="pj-all" href="../../index.html#projects">&larr; All projects</a>
+    <nav class="pj-reach" aria-label="Contact">
+      <a href="mailto:enzopbonelli@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/enzobonelli/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main class="pj-main" id="main">
+    <header class="pj-head">
+      <h1 class="pj-title" id="pj-title">Agentic GraphRAG for air-gapped LLM capability</h1>
+      <p class="pj-meta">Public sector</p>
+    </header>
+
+    <section class="pj-stage" aria-label="Architecture, built step by step">
+      <div class="pj-scene" id="pj-scene"></div>
+    </section>
+
+    <p class="pj-summary">An agentic RAG and GraphRAG architecture that brings LLM capability into accredited government networks (IL4+) that are fully air-gapped, built on a knowledge-service data model. The AI lead role covered directing the team that built that data model and the AI integration into existing infrastructure.</p>
+
+    <div class="pj-explain" id="pj-explain">
+        <ol class="pj-steps">
+          <li class="pj-step" id="pj-step-1" data-name="The secure network">
+            <p class="pj-step-label"><span class="pj-step-num">Step 1 of 5</span> <span aria-hidden="true">·</span> The secure network</p>
+            <h2 tabindex="-1">Everything stays inside the network.</h2>
+            <p>Everything runs inside an accredited government network (IL4+) that is fully air-gapped.</p>
+            <ul class="pj-chips"><li>IL4+</li><li>Air-gapped</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-2" data-name="Knowledge-service data model">
+            <p class="pj-step-label"><span class="pj-step-num">Step 2 of 5</span> <span aria-hidden="true">·</span> Knowledge-service data model</p>
+            <h2 tabindex="-1">A knowledge graph grounds the answers.</h2>
+            <p>The AI lead role covered directing the team that built the knowledge-service data model: a Neo4j knowledge graph that grounds the agents’ answers.</p>
+            <ul class="pj-chips"><li>Neo4j</li><li>GraphRAG</li><li>Data model</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-3" data-name="Agent crew">
+            <p class="pj-step-label"><span class="pj-step-num">Step 3 of 5</span> <span aria-hidden="true">·</span> Agent crew</p>
+            <h2 tabindex="-1">Agents retrieve context from the graph.</h2>
+            <p>Agents built with CrewAI and LangChain retrieve context from the graph, combining agentic RAG with GraphRAG.</p>
+            <ul class="pj-chips"><li>CrewAI</li><li>LangChain</li><li>Agentic RAG</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-4" data-name="Air-gapped LLM">
+            <p class="pj-step-label"><span class="pj-step-num">Step 4 of 5</span> <span aria-hidden="true">·</span> Air-gapped LLM</p>
+            <h2 tabindex="-1">The model runs inside the boundary.</h2>
+            <p>The agents reason with an LLM that runs inside the boundary and calls no external model APIs.</p>
+            <ul class="pj-chips"><li>Air-gapped LLM</li><li>No external APIs</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-5" data-name="Served on the network">
+            <p class="pj-step-label"><span class="pj-step-num">Step 5 of 5</span> <span aria-hidden="true">·</span> Served on the network</p>
+            <h2 tabindex="-1">Answers are served on the network.</h2>
+            <p>A FastAPI service in Docker, shipped with GitLab CI, delivers answers on the network and integrates with existing infrastructure. An enterprise API was also ported from Python to Go for a more scalable, resource-efficient service.</p>
+            <ul class="pj-chips"><li>FastAPI</li><li>Docker</li><li>GitLab</li><li>Go</li></ul>
+          </li>
+          <li class="pj-step pj-complete" id="pj-complete" data-name="The full system">
+            <p class="pj-step-label"><span class="pj-step-num">Complete</span> <span aria-hidden="true">·</span> The full system</p>
+            <h2 tabindex="-1">Agentic GraphRAG, entirely inside the boundary.</h2>
+            <p>Agentic RAG and GraphRAG on a knowledge-service data model bring LLM capability into accredited government networks (IL4+), with no external model APIs and integrated with existing infrastructure.</p>
+            <ul class="pj-chips" aria-label="Full tech stack"><li>Agentic RAG</li><li>GraphRAG</li><li>CrewAI</li><li>LangChain</li><li>Neo4j</li><li>FastAPI</li><li>Go</li><li>Docker</li><li>GitLab</li><li>Air-gapped</li></ul>
+            <div class="pj-onward">
+              <a class="btn btn-primary" href="../serverless-doc-ai/" aria-label="Next project: Serverless document AI" title="Serverless document AI">Next project &rarr;</a>
+              <a class="btn btn-ghost" href="../../index.html#projects">&larr; All projects</a>
+            </div>
+          </li>
+        </ol>
+        <p class="sr-only" id="pj-live" aria-live="polite"></p>
+      </div>
+
+      <nav class="pj-controls" aria-label="Step controls">
+        <button type="button" class="pj-btn pj-back" aria-label="Previous step"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7.4 3.3 2.7 8l4.7 4.7 1.1-1.1-2.9-2.8H14V7.2H5.6l2.9-2.8z"/></svg><span class="pj-btn-text">Back</span></button>
+        <ol class="pj-bar">
+          <li><button type="button" class="pj-seg" data-goto="0" aria-label="Step 1: The secure network"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">1</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="1" aria-label="Step 2: Knowledge-service data model"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">2</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="2" aria-label="Step 3: Agent crew"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">3</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="3" aria-label="Step 4: Air-gapped LLM"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">4</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="4" aria-label="Step 5: Served on the network"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">5</span></button></li>
+        </ol>
+        <button type="button" class="pj-btn pj-play" aria-pressed="false" aria-label="Play"><svg class="pj-ico-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13.5 8z"/></svg><svg class="pj-ico-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg></button>
+        <button type="button" class="pj-btn pj-next" aria-label="Next step"><span class="pj-btn-text">Next</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.6 3.3 13.3 8l-4.7 4.7-1.1-1.1 2.9-2.8H2V7.2h8.4L7.5 4.4z"/></svg></button>
+        <p class="pj-keys" aria-hidden="true"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>Space</kbd> to move through the steps</p>
+      </nav>
+  </main>
+
+  <script src="../../fireflies.js"></script>
+  <script src="../../scenes/public-sector-scene.js" defer></script>
+  <script src="../project.js" defer></script>
+</body>
+</html>

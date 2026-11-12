@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Real-time voice agent for field-service operations — Enzo Bonelli</title>
+  <meta name="description" content="How a self-hosted, real-time voice AI agent takes calls from field technicians, reasons through the intake and speaks back, streaming end to end." />
+  <link rel="canonical" href="https://enzobonelli.com/projects/voice-ai/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Enzo Bonelli" />
+  <meta property="og:title" content="Real-time voice agent for field-service operations" />
+  <meta property="og:description" content="How a self-hosted, real-time voice AI agent takes calls from field technicians, reasons through the intake and speaks back, streaming end to end." />
+  <meta property="og:url" content="https://enzobonelli.com/projects/voice-ai/" />
+  <meta property="og:image" content="https://enzobonelli.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a1630" />
+  <script>
+    /* Same rule as the homepage: night is the default; a choice saved for
+       this tab session ('eb-theme' in sessionStorage) wins. */
+    (function () {
+      var t = 'dark';
+      try { localStorage.removeItem('eb-theme'); var s = sessionStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
+      document.documentElement.dataset.theme = t;
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', t === 'light' ? '#0a0d14' : '#0a1630');
+    })();
+  </script>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../scenes/voice-scene.css" />
+  <link rel="stylesheet" href="../project.css" />
+</head>
+<body class="pj" data-scene="VoiceScene">
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <a class="pj-skip" href="#pj-explain">Skip to the explanation</a>
+
+  <header class="pj-top">
+    <a class="pj-brand" href="../../index.html" aria-label="Enzo Bonelli, home">
+      <span class="pj-brand-mark" aria-hidden="true">EB</span>
+      <span class="pj-brand-name">Enzo Bonelli</span>
+    </a>
+    <a class="pj-all" href="../../index.html#projects">&larr; All projects</a>
+    <nav class="pj-reach" aria-label="Contact">
+      <a href="mailto:enzopbonelli@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/enzobonelli/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main class="pj-main" id="main">
+    <header class="pj-head">
+      <h1 class="pj-title" id="pj-title">Real-time voice agent for field-service operations</h1>
+      <p class="pj-meta">In production, 2026</p>
+    </header>
+
+    <section class="pj-stage" aria-label="Architecture, built step by step">
+      <div class="pj-scene" id="pj-scene"></div>
+    </section>
+
+    <p class="pj-summary">A phone agent that replaces a legacy IVR workflow: it takes calls from field technicians, gathers what they need, then reasons and negotiates on their behalf &mdash; all in real time over a standard phone line, on self-hosted open-weight models so cost stays predictable.</p>
+
+    <div class="pj-explain" id="pj-explain">
+        <ol class="pj-steps">
+          <li class="pj-step" id="pj-step-1" data-name="The call">
+            <p class="pj-step-label"><span class="pj-step-num">Step 1 of 5</span> <span aria-hidden="true">·</span> The call</p>
+            <h2 tabindex="-1">A technician picks up the phone.</h2>
+            <p>A field technician calls on a regular phone line. The agent replaces a legacy IVR workflow and is in production.</p>
+            <ul class="pj-chips"><li>Voice AI</li><li>Telephony</li><li>Production</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-2" data-name="Stream in">
+            <p class="pj-step-label"><span class="pj-step-num">Step 2 of 5</span> <span aria-hidden="true">·</span> Stream in</p>
+            <h2 tabindex="-1">Audio streams in as it’s spoken.</h2>
+            <p>Twilio Media Streams carries the call audio over a WebSocket into a self-hosted boundary. Nothing is recorded first and processed later.</p>
+            <ul class="pj-chips"><li>Twilio</li><li>WebSockets</li><li>Self-hosted</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-3" data-name="Understand">
+            <p class="pj-step-label"><span class="pj-step-num">Step 3 of 5</span> <span aria-hidden="true">·</span> Understand</p>
+            <h2 tabindex="-1">Speech becomes text, turn by turn.</h2>
+            <p>Whisper transcribes the call while voice-activity detection handles turn-taking, so the agent knows when the caller has finished.</p>
+            <ul class="pj-chips"><li>Whisper</li><li>VAD</li><li>Streaming</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-4" data-name="Reason &amp; negotiate">
+            <p class="pj-step-label"><span class="pj-step-num">Step 4 of 5</span> <span aria-hidden="true">·</span> Reason &amp; negotiate</p>
+            <h2 tabindex="-1">The agent does the work.</h2>
+            <p>An LLM agent on a self-hosted open-weight model runs the intake, gathers the details it needs and handles the follow-up conversation on the technician’s behalf.</p>
+            <ul class="pj-chips"><li>Open-weight LLM</li><li>Agentic</li><li>Self-hosted</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-5" data-name="Speak back">
+            <p class="pj-step-label"><span class="pj-step-num">Step 5 of 5</span> <span aria-hidden="true">·</span> Speak back</p>
+            <h2 tabindex="-1">The reply streams back to the call.</h2>
+            <p>Low-latency text-to-speech streams the answer back through the call. It’s streaming end to end, and self-hosting keeps cost predictable.</p>
+            <ul class="pj-chips"><li>TTS</li><li>Low latency</li><li>Streaming</li></ul>
+          </li>
+          <li class="pj-step pj-complete" id="pj-complete" data-name="The full system">
+            <p class="pj-step-label"><span class="pj-step-num">Complete</span> <span aria-hidden="true">·</span> The full system</p>
+            <h2 tabindex="-1">Real time, self-hosted, in production.</h2>
+            <p>Speech recognition, reasoning and voice all run inside a self-hosted boundary, streaming end to end over a standard phone line &mdash; so the agent sounds immediate and the cost stays predictable.</p>
+            <ul class="pj-chips" aria-label="Full tech stack"><li>Voice AI</li><li>Twilio</li><li>Whisper</li><li>Open-weight LLM</li><li>TTS</li><li>WebSockets</li><li>Self-hosted</li></ul>
+            <div class="pj-onward">
+              <a class="btn btn-primary" href="../graphrag-tax/" aria-label="Next project: Air-gapped multi-agent GraphRAG" title="Air-gapped multi-agent GraphRAG">Next project &rarr;</a>
+              <a class="btn btn-ghost" href="../../index.html#projects">&larr; All projects</a>
+            </div>
+          </li>
+        </ol>
+        <p class="sr-only" id="pj-live" aria-live="polite"></p>
+      </div>
+
+      <nav class="pj-controls" aria-label="Step controls">
+        <button type="button" class="pj-btn pj-back" aria-label="Previous step"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7.4 3.3 2.7 8l4.7 4.7 1.1-1.1-2.9-2.8H14V7.2H5.6l2.9-2.8z"/></svg><span class="pj-btn-text">Back</span></button>
+        <ol class="pj-bar">
+          <li><button type="button" class="pj-seg" data-goto="0" aria-label="Step 1: The call"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">1</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="1" aria-label="Step 2: Stream in"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">2</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="2" aria-label="Step 3: Understand"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">3</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="3" aria-label="Step 4: Reason &amp; negotiate"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">4</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="4" aria-label="Step 5: Speak back"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">5</span></button></li>
+        </ol>
+        <button type="button" class="pj-btn pj-play" aria-pressed="false" aria-label="Play"><svg class="pj-ico-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13.5 8z"/></svg><svg class="pj-ico-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg></button>
+        <button type="button" class="pj-btn pj-next" aria-label="Next step"><span class="pj-btn-text">Next</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.6 3.3 13.3 8l-4.7 4.7-1.1-1.1 2.9-2.8H2V7.2h8.4L7.5 4.4z"/></svg></button>
+        <p class="pj-keys" aria-hidden="true"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>Space</kbd> to move through the steps</p>
+      </nav>
+  </main>
+
+  <script src="../../fireflies.js"></script>
+  <script src="../../scenes/voice-scene.js" defer></script>
+  <script src="../project.js" defer></script>
+</body>
+</html>

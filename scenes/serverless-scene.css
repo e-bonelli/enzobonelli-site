@@ -1,0 +1,204 @@
+/* ============================================================
+   ServerlessScene — isometric serverless document-AI pipeline
+   (pairs with serverless-scene.js). Colours follow the site theme
+   tokens; hex values are fallbacks for the default "firefly night"
+   palette. Shading matches the other scenes: one base colour (--f)
+   per solid -> lit top, mid left, shaded right.
+   ============================================================ */
+.ss {
+  --ss-a: var(--accent, #c6f432);
+  --ss-b: var(--accent-3, #7dd3fc);
+  --ss-c: var(--accent-2, #f5c542);
+  --ss-text: var(--text, #e8eefc);
+  --ss-muted: var(--text-muted, #a9b6d3);
+  --ss-deep: var(--bg-deep, #060e22);
+  --ss-surface: var(--bg-surface, #0f1f3d);
+  --ss-elev: var(--bg-elevated, #13264a);
+  --ss-on: var(--on-accent, #0a1630);
+  --ss-sans: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  --ss-ease: var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+  position: relative;
+  width: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.ss-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  overflow: visible;
+  font-family: var(--ss-sans);
+}
+/* overview cards: fill the card, content bbox centred */
+.ss.ss--overview { height: 100%; }
+.ss.ss--overview .ss-svg { height: 100%; }
+
+/* gradient stops */
+.ss .ss-st-a { stop-color: var(--ss-a); }
+.ss .ss-st-b { stop-color: var(--ss-b); }
+.ss .ss-st-c { stop-color: var(--ss-c); }
+.ss .ss-st-t { stop-color: var(--ss-text); }
+.ss .ss-st-plate0 { stop-color: #0f2042; stop-color: color-mix(in srgb, var(--ss-surface) 90%, #ffffff 5%); }
+.ss .ss-st-plate1 { stop-color: #0b1833; stop-color: color-mix(in srgb, var(--ss-surface) 82%, #000000 18%); }
+
+/* ---------- floor plate ---------- */
+.ss .ss-plate { stroke: rgba(255, 255, 255, 0.10); stroke-width: 1; }
+.ss .ss-plate-side.ss-l { fill: #091530; fill: color-mix(in srgb, var(--ss-surface) 72%, #000 28%); }
+.ss .ss-plate-side.ss-r { fill: #071026; fill: color-mix(in srgb, var(--ss-surface) 58%, #000 42%); }
+.ss .ss-plate-rim { fill: none; stroke: rgba(255, 255, 255, 0.16); stroke-width: 1; }
+.ss .ss-grid { fill: none; stroke: rgba(169, 182, 211, 0.07); stroke-width: 1; }
+.ss .ss-ring { fill: none; stroke: var(--ss-b); stroke-width: 1.3; opacity: 0; }
+
+/* ---------- AWS serverless region ---------- */
+.ss .ss-region { opacity: 0; }
+.ss .ss-region-fill { fill: var(--ss-a); fill-opacity: 0.03; }
+.ss .ss-region-line { fill: none; stroke: var(--ss-a); stroke-opacity: 0.6; stroke-width: 1.4; stroke-dasharray: 7 6; }
+.ss .ss-floortext { fill: var(--ss-a); fill-opacity: 0.75; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
+
+/* ---------- wires ---------- */
+.ss .ss-wire { fill: none; stroke: rgba(169, 182, 211, 0.22); stroke-width: 1.4; stroke-linejoin: round; }
+.ss .ss-arc { stroke-dasharray: 2 4; stroke: rgba(169, 182, 211, 0.3); }
+.ss .ss-wire-on { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; opacity: 0; }
+.ss .ss-w-up,
+.ss .ss-w-doc { stroke: var(--ss-b); }
+.ss .ss-w-req { stroke: var(--ss-a); }
+.ss .ss-w-chip { stroke: var(--ss-c); }
+.ss .ss-glow { opacity: 0; }
+
+/* ---------- solids ---------- */
+.ss .ss-block { --f: var(--ss-elev); --k: var(--ss-text); }
+.ss .ss-b-edge,
+.ss .ss-b-bucket,
+.ss .ss-b-globe { --f: #15305a; --f: color-mix(in srgb, var(--ss-elev) 90%, var(--ss-b) 8%); --k: var(--ss-b); }
+.ss .ss-b-gate { --f: #172c54; --f: color-mix(in srgb, var(--ss-elev) 92%, var(--ss-a) 5%); --k: var(--ss-a); }
+.ss .ss-b-pad { --f: #10213f; --f: color-mix(in srgb, var(--ss-surface) 85%, #ffffff 6%); --k: var(--ss-a); }
+.ss .ss-b-cube { --f: #2a4220; --f: color-mix(in srgb, var(--ss-elev) 72%, var(--ss-a) 22%); --k: var(--ss-a); }
+.ss .ss-b-bed { --f: #1b3260; --f: color-mix(in srgb, var(--ss-elev) 92%, #ffffff 5%); --k: var(--ss-a); }
+.ss .ss-b-bed2 { --f: #16294d; --f: color-mix(in srgb, var(--ss-elev) 86%, #000 10%); --k: var(--ss-a); }
+.ss .ss-b-out { --f: #1c2d52; --f: color-mix(in srgb, var(--ss-elev) 90%, var(--ss-c) 7%); --k: var(--ss-c); }
+.ss .ss-b-card { --f: #2b3b5e; --f: color-mix(in srgb, var(--ss-elev) 70%, #ffffff 16%); --k: var(--ss-c); }
+.ss .ss-sheet { --f: #c9d3e8; --f: color-mix(in srgb, var(--ss-text) 80%, var(--ss-elev) 20%); }
+
+.ss .ss-ao { fill: #000; fill-opacity: 0.32; }
+.ss .ss-face-t,
+.ss .ss-face-l,
+.ss .ss-face-r { stroke: rgba(255, 255, 255, 0.07); stroke-width: 1; stroke-linejoin: round; }
+.ss .ss-face-t { fill: #2a3d63; fill: color-mix(in srgb, var(--f) 80%, #ffffff 20%); stroke: rgba(255, 255, 255, 0.16); }
+.ss .ss-face-l { fill: var(--f); }
+.ss .ss-face-r { fill: #0d1b36; fill: color-mix(in srgb, var(--f) 70%, #000000 30%); }
+.ss .ss-face-shade { pointer-events: none; }
+.ss .ss-sheet .ss-face-t { fill: #e1e7f4; fill: color-mix(in srgb, var(--ss-text) 92%, var(--ss-elev) 8%); stroke: rgba(10, 22, 48, 0.25); }
+.ss .ss-sheet .ss-face-l,
+.ss .ss-sheet .ss-face-r { stroke: rgba(10, 22, 48, 0.25); }
+.ss .ss-tint { fill: var(--k); opacity: 0; transition: opacity 300ms var(--ss-ease); }
+.ss .ss-edge { fill: none; stroke: var(--k); stroke-width: 1.4; stroke-linejoin: round; opacity: 0; transition: opacity 300ms var(--ss-ease); }
+.ss .ss-block.is-on .ss-edge { opacity: 0.3; }
+.ss .ss-block.is-lit .ss-edge { opacity: 0.95; }
+.ss .ss-block.is-lit .ss-tint { opacity: 0.1; }
+.ss .ss-veil { fill: #0d1c39; fill: color-mix(in srgb, var(--ss-surface) 92%, #ffffff 3%); pointer-events: none; }
+
+/* documents + images */
+.ss .ss-doc-lines { fill: none; stroke: #8f9cba; stroke: color-mix(in srgb, var(--ss-elev) 45%, var(--ss-text) 55%); stroke-width: 2.4; stroke-linecap: round; }
+.ss .ss-img-frame { fill: #b9c6e0; fill: color-mix(in srgb, var(--ss-b) 22%, var(--ss-text) 70%); }
+.ss .ss-img-hill { fill: #6d8fb8; fill: color-mix(in srgb, var(--ss-b) 45%, var(--ss-elev) 55%); }
+.ss .ss-img-sun { fill: var(--ss-c); }
+
+/* CloudFront edge globe */
+.ss .ss-sphere { fill: var(--f); }
+.ss .ss-sphere-rim { fill: none; stroke: var(--ss-b); stroke-opacity: 0.35; stroke-width: 1.2; transition: stroke-opacity 300ms var(--ss-ease); }
+.ss .ss-b-globe.is-lit .ss-sphere-rim { stroke-opacity: 0.95; }
+.ss .ss-lat { fill: none; stroke: var(--ss-b); stroke-opacity: 0.4; stroke-width: 1; }
+.ss .ss-mer { stroke-opacity: 0.3; }
+.ss .ss-edge-dot { fill: var(--ss-b); }
+
+/* S3 bucket */
+.ss .ss-bucket-in { fill: #08142c; fill: color-mix(in srgb, var(--ss-deep) 85%, var(--ss-b) 6%); }
+.ss .ss-rim { fill: none; stroke: #4a6a96; stroke: color-mix(in srgb, var(--f) 55%, #ffffff 35%); stroke-width: 2.4; }
+.ss .ss-hoop { fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 1.6; }
+.ss .ss-fill-top { fill: var(--ss-b); fill-opacity: 0.18; stroke: var(--ss-b); stroke-opacity: 0.4; stroke-width: 1; }
+.ss .ss-fill-sheet { fill: #dfe6f3; fill: color-mix(in srgb, var(--ss-text) 90%, var(--ss-b) 10%); stroke: rgba(10, 22, 48, 0.3); stroke-width: 1; }
+
+/* API Gateway */
+.ss .ss-scan { fill: var(--ss-a); fill-opacity: 0.14; stroke: var(--ss-a); stroke-opacity: 0.55; stroke-width: 1; opacity: 0; }
+.ss .ss-led { fill: var(--ss-a); }
+.ss .ss-chev { fill: none; stroke: var(--ss-a); stroke-opacity: 0.6; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Lambda */
+.ss .ss-slot { fill: none; stroke: var(--ss-a); stroke-opacity: 0.28; stroke-width: 1; stroke-dasharray: 3 3; }
+.ss .ss-lambda-glyph { fill: var(--ss-a); fill-opacity: 0.55; font-size: 17px; font-weight: 600; }
+.ss .ss-cube { opacity: 0; }
+.ss .ss-cube .ss-edge { opacity: 0.55; }
+.ss .ss-cube.is-hot .ss-edge { opacity: 1; }
+.ss .ss-cube .ss-tint { opacity: 0.12; }
+.ss .ss-cube.is-hot .ss-tint { opacity: 0.35; }
+
+/* Bedrock */
+.ss .ss-core-slot { stroke: var(--ss-a); stroke-opacity: 0.6; stroke-width: 1; }
+.ss .ss-core-lines { stroke: rgba(6, 14, 34, 0.45); stroke-width: 1; }
+.ss .ss-core-top { fill: var(--ss-a); fill-opacity: 0.1; stroke: var(--ss-a); stroke-opacity: 0.55; stroke-width: 1; }
+.ss .ss-core-top2 { fill: var(--ss-a); fill-opacity: 0.3; }
+.ss .ss-gem-face { fill: var(--ss-a); stroke: #f4ffd0; stroke: color-mix(in srgb, var(--ss-a) 40%, #ffffff 60%); stroke-opacity: 0.6; stroke-width: 0.8; stroke-linejoin: round; }
+.ss .ss-gem-shade { fill: var(--ss-deep); }
+.ss .ss-gem-beam { stroke: var(--ss-a); stroke-opacity: 0.6; stroke-width: 1.4; stroke-dasharray: 2 4; opacity: 0; }
+
+/* structured data */
+.ss .ss-pad-line { fill: none; stroke: rgba(255, 255, 255, 0.10); stroke-width: 1; stroke-dasharray: 3 4; }
+.ss .ss-card { opacity: 0; }
+.ss .ss-field-key { fill: rgba(169, 182, 211, 0.45); }
+.ss .ss-field-v { fill-opacity: 0.85; }
+.ss .ss-fv0 { fill: var(--ss-c); }
+.ss .ss-fv1 { fill: var(--ss-b); }
+.ss .ss-fv2 { fill: var(--ss-a); }
+
+/* packets */
+.ss .ss-ff,
+.ss .ss-pk,
+.ss .ss-trail { opacity: 0; }
+.ss .ss-core { fill: #fffbe6; }
+.ss .ss-trail-hA { fill: var(--ss-a); }
+.ss .ss-trail-hB { fill: var(--ss-b); }
+.ss .ss-trail-hC { fill: var(--ss-c); }
+.ss .ss-pk-sheet { fill: #fffbe6; }
+.ss .ss-pk-lines { fill: none; stroke: #5a7aa8; stroke: color-mix(in srgb, var(--ss-b) 55%, var(--ss-on) 45%); stroke-width: 1.3; stroke-linecap: round; }
+.ss .ss-chip-a { fill: var(--ss-a); }
+.ss .ss-chip-b { fill: var(--ss-b); }
+.ss .ss-chip-c { fill: var(--ss-c); }
+
+/* ---------- labels ---------- */
+.ss .ss-leader { fill: none; stroke: var(--ss-muted); stroke-opacity: 0.5; stroke-width: calc(var(--ss-k, 1) * 1px); }
+.ss .ss-leader-dot { fill: var(--ss-text); }
+.ss .ss-title {
+  fill: var(--ss-text);
+  font-size: calc(var(--ss-k, 1) * 13px);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  transition: fill 300ms var(--ss-ease);
+}
+.ss .ss-sub { fill: var(--ss-muted); font-size: calc(var(--ss-k, 1) * 11.5px); }
+.ss .ss-label.is-lit .ss-title { fill: var(--ss-a); }
+.ss .ss-l-docs.is-lit .ss-title,
+.ss .ss-l-edge.is-lit .ss-title { fill: var(--ss-b); }
+.ss .ss-l-out.is-lit .ss-title { fill: var(--ss-c); }
+
+/* cost tag */
+.ss .ss-tag { opacity: 0; }
+.ss .ss-tag-bg { fill: #0f1f3d; fill: color-mix(in srgb, var(--ss-surface) 88%, var(--ss-c) 6%); stroke: var(--ss-c); stroke-opacity: 0.55; stroke-width: 1; }
+.ss .ss-tag-text { fill: var(--ss-text); font-size: 12px; font-weight: 600; }
+.ss .ss-meter-was { fill: rgba(169, 182, 211, 0.35); }
+.ss .ss-meter-now { fill: var(--ss-c); }
+.ss .ss-meter-band { fill: none; stroke: var(--ss-c); stroke-opacity: 0.8; stroke-width: 1; stroke-dasharray: 1.5 1.5; }
+
+/* overview + compact: titles only */
+.ss.is-compact .ss-minor,
+.ss.ss--overview .ss-minor { display: none; }
+.ss.is-compact .ss-title,
+.ss.ss--overview .ss-title { font-size: calc(var(--ss-k, 1) * 11px); }
+.ss.ss--overview:not(.is-compact) .ss-title { font-size: calc(var(--ss-k, 1) * 12px); }
+
+/* reduced motion: still frames, instant state changes */
+.ss.is-reduced * { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .ss * { transition: none !important; }
+}
+.ss .ss-floortext-2 { fill-opacity: 0.55; font-weight: 500; }

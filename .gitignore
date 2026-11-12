@@ -4,3 +4,5 @@
 .claude/
 __*.html
 .env*
+story/
+skins/

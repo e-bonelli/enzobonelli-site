@@ -11,9 +11,9 @@
              shooting star streaking across the upper sky every few
              seconds.
    Colours come from --accent / --accent-2. Themes crossfade, the loop
-   pauses when the tab is hidden, and reduced motion gets one still
-   frame. One canvas, one rAF loop, sprites pre-rendered, no per-frame
-   allocations.
+   pauses when the tab or the canvas is hidden, and reduced motion gets
+   one still frame. One canvas, one rAF loop, sprites pre-rendered, no
+   per-frame allocations.
    ============================================================ */
 (function () {
   'use strict';
@@ -828,8 +828,15 @@
   // ---------- Loop ----------
   var running = false, last = 0, rafId = 0;
 
+  // Skins hide the canvas with style.display = 'none'; don't animate
+  // what nobody can see.
+  function shown() {
+    return canvas.style.display !== 'none';
+  }
+
   function ffFrame(now) {
     if (!running) return;
+    if (!shown()) { stop(); return; }
     var dt = (now - last) / 1000;
     last = now;
     if (dt > 0.05) dt = 0.05;
@@ -841,7 +848,7 @@
   }
 
   function start() {
-    if (running || reduced || document.hidden) return;
+    if (running || reduced || document.hidden || !shown()) return;
     running = true;
     last = performance.now();
     rafId = requestAnimationFrame(ffFrame);
@@ -957,6 +964,21 @@
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) stop(); else start();
   });
+
+  // Pause while a skin hides the canvas; resume (start() resets the
+  // timestamp, so no time jump) when it is shown again. A theme change
+  // made while hidden has no one to crossfade for, so it lands settled.
+  if (window.MutationObserver) {
+    var wasShown = shown();
+    new MutationObserver(function () {
+      var now = shown();
+      if (now === wasShown) return;
+      wasShown = now;
+      if (!now) { stop(); return; }
+      mix = mixTarget;
+      if (reduced) drawStatic(); else start();
+    }).observe(canvas, { attributes: true, attributeFilter: ['style'] });
+  }
 
   if (reduceMQ) {
     var onReduce = function () {

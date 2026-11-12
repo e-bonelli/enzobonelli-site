@@ -1,0 +1,399 @@
+/* ============================================================
+   PROJECT PAGES — step-by-step architecture walkthrough
+   One template for every project: the scene builds itself on the
+   left while the panel on the right explains the current step.
+   Tokens come from ../../styles.css; scene styling lives in
+   ../../scenes/<name>-scene.css. project.js drives the steps.
+   ============================================================ */
+
+.pj {
+  --bar-h: 60px;
+  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --gut: 32px;
+  --glow-a: color-mix(in srgb, var(--accent) 55%, transparent);
+  --main-h: calc(100vh - var(--bar-h));
+}
+@supports (height: 100svh) {
+  .pj { --main-h: calc(100svh - var(--bar-h)); }
+}
+html:has(.pj) { scroll-behavior: auto; scroll-padding-top: 0; }
+body.pj { padding-top: var(--bar-h); }
+
+.pj-skip {
+  position: absolute; left: 16px; top: -60px; z-index: 200;
+  padding: 8px 14px; border-radius: 8px;
+  background: var(--accent); color: var(--on-accent); font-weight: 600; font-size: 14px;
+}
+.pj-skip:focus { top: 12px; color: var(--on-accent); }
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Top bar ---------- */
+.pj-top {
+  position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--bar-h);
+  display: flex; align-items: center; gap: 18px; padding: 0 28px;
+  background: color-mix(in srgb, var(--bg-deep) 78%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--border);
+}
+.pj-brand { display: flex; align-items: center; gap: 10px; color: var(--text-bright); font-weight: 600; white-space: nowrap; }
+.pj-brand:hover { color: var(--text-bright); }
+.pj-brand-mark {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px;
+  background: var(--gradient); color: var(--on-accent); font-size: 13px; font-weight: 700; letter-spacing: 0.02em;
+}
+.pj-all {
+  margin-right: auto;
+  padding: 7px 12px; border-radius: 8px;
+  color: var(--text-muted); font-size: 14px; font-weight: 500; white-space: nowrap;
+}
+.pj-all:hover { color: var(--text-bright); background: color-mix(in srgb, var(--tint) 5%, transparent); }
+.pj-reach { display: flex; gap: 6px; }
+.pj-reach a {
+  padding: 6px 13px; border-radius: 999px; border: 1px solid var(--border-strong);
+  color: var(--text-bright); font-size: 13.5px; font-weight: 500; white-space: nowrap;
+}
+.pj-reach a:hover { border-color: var(--accent); color: var(--text-bright); }
+
+/* ---------- Main grid ----------
+   Every block is a direct child so desktop can place them in two
+   columns and mobile can reorder them (title, scene, step, summary). */
+.pj-main {
+  --col-l: clamp(16px, 2vw, 32px);
+  display: grid;
+  grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    'stage head'
+    'stage summary'
+    'stage explain'
+    'stage controls';
+  height: var(--main-h);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.pj-head, .pj-summary, .pj-explain, .pj-controls {
+  margin-left: var(--col-l);
+  margin-right: var(--gut);
+  max-width: 34rem;
+  min-width: 0;
+}
+
+/* Scene panel: no frame. The architecture sits on the night sky, with a
+   soft pool of light under it so the plate reads as standing on a floor. */
+.pj-stage {
+  grid-area: stage;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 8px 24px var(--gut);
+  min-width: 0; min-height: 0;
+}
+.pj-stage::before {
+  content: ''; position: absolute; left: 12%; right: 6%; top: 30%; bottom: 8%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent-3) 9%, transparent), transparent 75%);
+  pointer-events: none;
+}
+.pj-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 760px;
+  display: flex; align-items: center; justify-content: center;
+}
+.pj-scene > * { width: 100%; max-height: 100%; }
+
+/* ---------- Explanation column ---------- */
+.pj-head { grid-area: head; padding-top: clamp(20px, 4.2vh, 44px); }
+.pj-title {
+  font-family: var(--display); font-weight: 500; font-variation-settings: 'opsz' 96;
+  font-size: clamp(25px, 2.25vw, 34px); line-height: 1.12; letter-spacing: -0.012em;
+  color: var(--text-bright); text-wrap: balance;
+}
+.pj-meta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: clamp(6px, 1.2vh, 10px);
+  font-size: 13.5px; color: var(--text-dim);
+}
+.pj-meta::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 8px 1px var(--glow-a);
+}
+.pj-summary {
+  grid-area: summary;
+  margin-top: clamp(8px, 1.4vh, 14px);
+  font-size: 15px; line-height: 1.6; color: var(--text-muted);
+}
+
+/* The steps share one grid cell, so the panel keeps the height of the
+   tallest step and the controls never jump. Without JS every step is
+   simply listed in order. */
+.pj-explain {
+  position: relative;
+  margin-top: clamp(16px, 3.2vh, 32px);
+  padding-top: clamp(16px, 3vh, 28px);
+  grid-area: explain;
+  min-height: 0;
+  /* Safety valve for unusually short windows; normally nothing scrolls. */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-left: 8px; margin-left: calc(var(--col-l) - 8px);
+  padding-bottom: 4px;
+}
+.pj-explain::before {
+  content: ''; position: absolute; top: 0; left: 8px; right: 0;
+  border-top: 1px solid var(--border);
+}
+.pj-steps { display: grid; }
+.pj-step + .pj-step { margin-top: 32px; }
+.is-js .pj-step { grid-area: 1 / 1; margin-top: 0; }
+.is-js .pj-step:not(.is-current) {
+  visibility: hidden; opacity: 0; transform: translateY(6px);
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0s linear 0.22s;
+}
+.is-js .pj-step.is-current {
+  visibility: visible; opacity: 1; transform: none;
+  transition: opacity 0.42s var(--ease) 0.12s, transform 0.5s var(--ease) 0.12s, visibility 0s;
+}
+
+.pj-step-label {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  font-size: 14px; font-weight: 500; color: var(--text-muted);
+}
+.pj-step-num {
+  font-family: var(--font-mono); font-size: 12.5px; font-weight: 600;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.pj-step h2 {
+  margin-top: 10px;
+  font-family: var(--display); font-weight: 500; font-variation-settings: 'opsz' 72;
+  font-size: clamp(22px, 1.85vw, 28px); line-height: 1.2; letter-spacing: -0.008em;
+  color: var(--text-bright); text-wrap: balance;
+}
+.pj-step h2:focus { outline: none; }
+.pj-step h2:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.pj-step p:not(.pj-step-label) {
+  margin-top: 10px;
+  font-size: 16px; line-height: 1.62; color: var(--text-muted);
+  max-width: 46ch;
+}
+
+.pj-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.pj-chips li {
+  padding: 4px 10px;
+  background: color-mix(in srgb, var(--tint) 4%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; color: var(--text-muted);
+}
+
+/* Completion state: the whole stack, then where to go next. */
+.pj-complete .pj-step-num { color: var(--accent-2); }
+.pj-complete .pj-chips li { border-color: color-mix(in srgb, var(--accent) 26%, transparent); color: var(--text); }
+.pj-onward { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.pj-onward .btn { padding: 11px 18px; font-size: 14.5px; }
+
+/* ---------- Controls ---------- */
+.pj-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-areas: 'bar bar bar bar' 'back . play next';
+  align-items: center;
+  row-gap: 14px; column-gap: 8px;
+  grid-area: controls;
+  margin-top: clamp(16px, 3vh, 28px);
+  margin-bottom: clamp(18px, 3.4vh, 32px);
+}
+
+.pj-bar { grid-area: bar; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.pj-seg {
+  position: relative;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 7px;
+  width: 100%; min-height: 44px; padding: 0 0 4px;
+  border: 0; background: none; cursor: pointer;
+  font: inherit; color: var(--text-dim); text-align: left;
+}
+.pj-seg-track {
+  position: relative; display: block; width: 100%; height: 4px; border-radius: 4px; overflow: hidden;
+  background: color-mix(in srgb, var(--tint) 10%, transparent);
+  transition: background-color 0.3s var(--ease);
+}
+.pj-seg-track i {
+  position: absolute; inset: 0; border-radius: inherit;
+  background: var(--accent); transform-origin: 0 50%; transform: scaleX(0);
+  transition: transform 0.45s var(--ease);
+}
+.pj-seg-num { font-family: var(--font-mono); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pj-seg-name { display: none; }
+.pj-seg:hover { color: var(--text); }
+.pj-seg:hover .pj-seg-track { background: color-mix(in srgb, var(--tint) 18%, transparent); }
+.pj-seg.is-done { color: var(--text-muted); }
+.pj-seg.is-done .pj-seg-track i { transform: scaleX(1); background: color-mix(in srgb, var(--accent) 52%, var(--bg)); }
+.pj-seg[aria-current="step"] { color: var(--accent); }
+.pj-seg[aria-current="step"] .pj-seg-track { box-shadow: 0 0 12px -2px var(--glow-a); }
+.pj-seg[aria-current="step"] .pj-seg-track i { transform: scaleX(1); }
+/* While playing, the current segment fills over the dwell time. */
+.is-playing .pj-seg[aria-current="step"] .pj-seg-track i { animation: pj-dwell var(--dwell, 6s) linear both; }
+@keyframes pj-dwell { from { transform: scaleX(0.04); } to { transform: scaleX(1); } }
+.pj-seg:focus-visible { outline-offset: 2px; }
+
+.pj-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 0 18px; border-radius: 12px;
+  border: 1px solid var(--border-strong);
+  background: color-mix(in srgb, var(--tint) 3%, transparent);
+  color: var(--text); font: inherit; font-size: 14.5px; font-weight: 500;
+  cursor: pointer; white-space: nowrap;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), opacity 0.2s;
+}
+.pj-btn:hover { border-color: color-mix(in srgb, var(--accent) 55%, transparent); background: color-mix(in srgb, var(--tint) 6%, transparent); }
+.pj-btn:disabled { opacity: 0.35; cursor: default; }
+.pj-btn:disabled:hover { border-color: var(--border-strong); background: color-mix(in srgb, var(--tint) 3%, transparent); }
+.pj-btn svg { width: 14px; height: 14px; flex: none; fill: currentColor; }
+.pj-back { grid-area: back; }
+.pj-play { grid-area: play; padding: 0 14px; }
+.pj-next {
+  grid-area: next;
+  background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600;
+}
+.pj-next:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent); }
+.pj-play .pj-ico-pause { display: none; }
+.is-playing .pj-play .pj-ico-play { display: none; }
+.is-playing .pj-play .pj-ico-pause { display: block; }
+.pj-play[aria-pressed="true"] { border-color: color-mix(in srgb, var(--accent) 55%, transparent); color: var(--accent); }
+
+.pj-keys { display: none; grid-column: 1 / -1; font-size: 12.5px; color: var(--text-dim); }
+@media (min-height: 1000px) { .pj-keys { display: block; } }
+.pj-keys kbd {
+  font-family: var(--font-mono); font-size: 11px; padding: 1px 6px; border-radius: 4px;
+  border: 1px solid var(--border-strong); color: var(--text-muted);
+}
+
+/* No-JS: the controls do nothing, so hide them and let the list read. */
+.pj-controls { visibility: hidden; }
+.is-js .pj-controls { visibility: visible; }
+
+/* ---------- Placeholder scene (until the real scene loads) ----------
+   Five square plates in isometric projection, stacked bottom-up. Built
+   plates are lit; the one being built fades in; the rest are outlines. */
+.pj-ph {
+  --s: clamp(120px, 15vw, 200px);
+  position: relative; width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+}
+.pj-ph-stack { display: flex; flex-direction: column-reverse; align-items: center; padding-top: calc(var(--s) * 0.1); }
+.pj-ph-plate {
+  display: block; flex: none;
+  width: var(--s); height: var(--s);
+  transform: rotateX(60deg) rotateZ(-45deg);
+  border-radius: 12px;
+  border: 1px dashed color-mix(in srgb, var(--tint) 16%, transparent);
+  background: transparent;
+  transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease), opacity 0.5s var(--ease);
+}
+.pj-ph-plate + .pj-ph-plate { margin-bottom: calc(var(--s) * -0.8); } /* column-reverse: overlap downwards */
+.pj-ph-plate.is-on, .pj-ph-plate.is-building {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--bg-elevated) 92%, var(--accent) 8%), var(--bg-surface));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent), 0 0 34px -8px var(--glow-a);
+}
+.pj-ph-plate.is-building { opacity: calc(0.25 + 0.75 * var(--p, 0)); }
+.pj-ph-labels { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 480px; padding: 0 12px; }
+.pj-ph-labels span {
+  padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.pj-ph-labels span.is-on { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+
+/* ---------- Short desktop windows (e.g. 1280x720) ----------
+   Controls collapse into one strip and the type tightens so the whole
+   walkthrough still fits without scrolling. */
+@media (min-width: 960px) and (max-height: 860px) {
+  .pj-controls {
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    grid-template-areas: 'bar back play next';
+    column-gap: 8px;
+  }
+  .pj-bar { gap: 4px; margin-right: 10px; }
+  .pj-back { width: 44px; padding: 0; }
+  .pj-back .pj-btn-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
+@media (min-width: 960px) and (max-height: 780px) {
+  .pj-main { grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); }
+  .pj-title { font-size: clamp(23px, 2vw, 30px); }
+  .pj-summary { font-size: 14px; line-height: 1.55; }
+  .pj-explain { margin-top: 14px; padding-top: 14px; }
+  .pj-step h2 { font-size: clamp(20px, 1.7vw, 25px); margin-top: 8px; }
+  .pj-step p:not(.pj-step-label) { font-size: 15px; line-height: 1.55; margin-top: 8px; }
+  .pj-chips { margin-top: 12px; }
+  .pj-chips li { padding: 3px 9px; font-size: 11px; }
+  .pj-onward { margin-top: 14px; }
+  .pj-onward .btn { padding: 10px 16px; font-size: 14px; }
+  .pj-controls { margin-top: 14px; }
+}
+
+/* ---------- Tablet / mobile ---------- */
+@media (max-width: 959.98px) {
+  .pj { --bar-h: 56px; --gut: 16px; }
+  .pj-top { padding: 0 var(--gut); gap: 10px; }
+  .pj-all { padding: 7px 8px; font-size: 13.5px; }
+  .pj-reach a { padding: 6px 11px; font-size: 13px; }
+
+  /* Title, then the scene, then the step being told; the project
+     summary follows for anyone who keeps reading. */
+  .pj-main {
+    display: flex; flex-direction: column; height: auto;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+  .pj-head, .pj-summary, .pj-explain { margin-left: var(--gut); margin-right: var(--gut); max-width: 40rem; }
+  .pj-head { order: 1; padding-top: 16px; }
+  .pj-stage { order: 2; height: 40vh; height: 40svh; min-height: 240px; padding: 4px var(--gut) 0; }
+  .pj-explain { order: 3; margin-top: 4px; padding-top: 18px; padding-left: 0; overflow: visible; }
+  .pj-explain::before { left: 0; }
+  .pj-summary { order: 4; margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .pj-title { font-size: 23px; }
+  .pj-meta { font-size: 13px; margin-top: 4px; }
+  .pj-step h2 { font-size: 22px; margin-top: 8px; }
+  .pj-step p:not(.pj-step-label) { font-size: 15.5px; line-height: 1.58; margin-top: 8px; }
+  .pj-chips { margin-top: 12px; }
+  .pj-ph { --s: clamp(90px, 26vw, 150px); gap: 18px; }
+
+  /* Fixed bottom bar: Back, dots, Play, Next */
+  .pj-controls {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    max-width: none; margin: 0;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: 'back bar play next';
+    column-gap: 6px;
+    padding: 10px var(--gut) calc(10px + env(safe-area-inset-bottom, 0px));
+    background: color-mix(in srgb, var(--bg-deep) 88%, transparent);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    border-top: 1px solid var(--border);
+  }
+  .pj-keys { display: none; }
+  .pj-bar { display: flex; justify-content: center; gap: 0; margin: 0; }
+  .pj-seg { width: 28px; min-height: 44px; align-items: center; justify-content: center; padding: 0; }
+  .pj-seg-num { display: none; }
+  .pj-seg-track { width: 10px; height: 10px; border-radius: 50%; transition: width 0.3s var(--ease), background-color 0.3s var(--ease); }
+  .pj-seg[aria-current="step"] .pj-seg-track { width: 20px; border-radius: 6px; }
+  .pj-btn { padding: 0 14px; }
+  .pj-back, .pj-play { width: 44px; padding: 0; }
+  .pj-back .pj-btn-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
+
+@media (max-width: 420px) {
+  .pj-brand-name { display: none; }
+  .pj-top { gap: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-js .pj-step:not(.is-current),
+  .is-js .pj-step.is-current,
+  .pj-seg-track i,
+  .pj-ph-plate { transition: none; }
+  .is-playing .pj-seg[aria-current="step"] .pj-seg-track i { animation: none; transform: scaleX(1); }
+}

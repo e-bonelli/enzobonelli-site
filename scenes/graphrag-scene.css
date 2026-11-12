@@ -1,0 +1,148 @@
+/* ============================================================
+   IsoScene — isometric GraphRAG architecture (pairs with iso-scene.js)
+   Colours follow the site theme tokens; hex values are fallbacks
+   for the default "firefly night" palette.
+   ============================================================ */
+.iso-scene {
+  --iso-a: var(--accent, #c6f432);
+  --iso-b: var(--accent-2, #f5c542);
+  --iso-c: var(--accent-3, #7dd3fc);
+  --iso-text: var(--text, #e8eefc);
+  --iso-muted: var(--text-muted, #a9b6d3);
+  --iso-dim: var(--text-dim, #7d8db0);
+  --iso-deep: var(--bg-deep, #060e22);
+  --iso-surface: var(--bg-surface, #0f1f3d);
+  --iso-elev: var(--bg-elevated, #13264a);
+  --iso-mono: var(--font-mono, 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace);
+  --iso-sans: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  font-family: var(--iso-sans);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ---------- shaded solids: one base colour (--f) → 3 faces ---------- */
+.iso-scene .iso-solid { --f: var(--iso-elev); }
+.iso-scene .iso-face {
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.iso-scene .iso-top { fill: #2a3d63; fill: color-mix(in srgb, var(--f) 80%, #ffffff 20%); stroke: rgba(255, 255, 255, 0.16); }
+.iso-scene .iso-left { fill: #13264a; fill: var(--f); }
+.iso-scene .iso-right { fill: #0d1b36; fill: color-mix(in srgb, var(--f) 70%, #000000 30%); }
+
+/* floor plate */
+.iso-scene .iso-plate { --f: var(--iso-surface); }
+.iso-scene .iso-plate .iso-top { fill: #0d1c39; fill: color-mix(in srgb, var(--iso-surface) 88%, #ffffff 4%); stroke: rgba(255, 255, 255, 0.10); }
+.iso-scene .iso-plate .iso-left { fill: #091530; fill: color-mix(in srgb, var(--iso-surface) 75%, #000 25%); }
+.iso-scene .iso-plate .iso-right { fill: #071026; fill: color-mix(in srgb, var(--iso-surface) 60%, #000 40%); }
+.iso-scene .iso-grid line { stroke: rgba(169, 182, 211, 0.07); stroke-width: 1; }
+
+/* air-gapped boundary */
+.iso-scene .iso-bound-fill { fill: var(--iso-b); fill-opacity: 0.025; }
+.iso-scene .iso-bound-line {
+  fill: none; stroke: var(--iso-b); stroke-opacity: 0.75; stroke-width: 1.4;
+  stroke-dasharray: 7 6;
+}
+.iso-scene .iso-bound-corner { fill: none; stroke: var(--iso-b); stroke-width: 2.6; stroke-linecap: round; }
+.iso-scene .iso-floor-text { fill: var(--iso-b); font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
+.iso-scene .iso-shade, .iso-scene .iso-glass-sheen { pointer-events: none; }
+.iso-scene .iso-shadow-slab { mix-blend-mode: multiply; }
+
+/* documents */
+.iso-scene .iso-sheet { --f: #c9d3e8; --f: color-mix(in srgb, var(--iso-text) 80%, var(--iso-elev) 20%); }
+.iso-scene .iso-sheet .iso-top { fill: #e1e7f4; fill: color-mix(in srgb, var(--iso-text) 92%, var(--iso-elev) 8%); stroke: rgba(10, 22, 48, 0.25); }
+.iso-scene .iso-sheet .iso-face { stroke: rgba(10, 22, 48, 0.25); }
+.iso-scene .iso-doc-lines line { stroke: #8f9cba; stroke: color-mix(in srgb, var(--iso-elev) 45%, var(--iso-text) 55%); stroke-width: 2; stroke-linecap: round; }
+.iso-scene .iso-doc-lines .iso-doc-head { stroke: var(--iso-elev); stroke-width: 3; }
+.iso-scene .iso-pii rect { fill: none; stroke: #c44; stroke: color-mix(in srgb, var(--iso-b) 50%, #d03b3b 50%); stroke-width: 1.5; }
+.iso-scene .iso-pii-text { fill: #c44; fill: color-mix(in srgb, var(--iso-b) 50%, #d03b3b 50%); font-size: 9px; font-weight: 700; letter-spacing: 0.08em; }
+
+/* ingestion server */
+.iso-scene .iso-server { --f: #172c54; --f: color-mix(in srgb, var(--iso-elev) 92%, var(--iso-c) 8%); }
+.iso-scene .iso-server .iso-top { stroke: rgba(125, 211, 252, 0.35); stroke: color-mix(in srgb, var(--iso-c) 40%, transparent); }
+.iso-scene .iso-seams line { stroke: rgba(0, 0, 0, 0.35); stroke-width: 1.2; }
+.iso-scene .iso-vents line { stroke: rgba(255, 255, 255, 0.13); stroke-width: 1.6; stroke-linecap: round; }
+.iso-scene .iso-bay { fill: rgba(0, 0, 0, 0.32); }
+.iso-scene .iso-led-a { fill: var(--iso-a); }
+.iso-scene .iso-led-c { fill: var(--iso-c); }
+.iso-scene .iso-slot { fill: var(--iso-deep); stroke: var(--iso-a); stroke-opacity: 0.55; stroke-width: 1; }
+.iso-scene .iso-port { fill: var(--iso-deep); stroke: var(--iso-c); stroke-opacity: 0.6; stroke-width: 1; }
+
+/* GraphRAG glass slab */
+.iso-scene .iso-glass .iso-top { fill: var(--iso-c); fill-opacity: 0.075; stroke: var(--iso-c); stroke-opacity: 0.55; }
+.iso-scene .iso-glass .iso-left { fill: var(--iso-c); fill-opacity: 0.20; stroke: var(--iso-c); stroke-opacity: 0.45; }
+.iso-scene .iso-glass .iso-right { fill: var(--iso-c); fill-opacity: 0.11; stroke: var(--iso-c); stroke-opacity: 0.45; }
+.iso-scene .iso-glass-inset { fill: none; stroke: var(--iso-c); stroke-opacity: 0.16; stroke-width: 1; stroke-dasharray: 2 5; }
+.iso-scene .iso-edges line { stroke: var(--iso-c); stroke-opacity: 0.5; stroke-width: 1.2; }
+.iso-scene .iso-edges .iso-edge-lit { stroke: var(--iso-a); stroke-opacity: 1; stroke-width: 2.2; }
+.iso-scene .iso-node-base { fill: rgba(0, 0, 0, 0.35); }
+.iso-scene .iso-node-core { fill: #b8e6fb; fill: color-mix(in srgb, var(--iso-c) 70%, #ffffff 30%); stroke: var(--iso-deep); stroke-width: 1; }
+.iso-scene .iso-node-core.is-lit { fill: var(--iso-a); }
+.iso-scene .iso-lineage line { stroke: var(--iso-c); stroke-width: 1.2; stroke-dasharray: 1.5 4; stroke-linecap: round; stroke-opacity: 0.8; }
+
+/* agents */
+.iso-scene .iso-tower { --f: #1b3260; --f: color-mix(in srgb, var(--iso-elev) 85%, var(--iso-a) 6%); }
+.iso-scene .iso-tower .iso-top { stroke: var(--iso-a); stroke-opacity: 0.45; }
+.iso-scene .iso-pad { --f: #10213f; --f: color-mix(in srgb, var(--iso-surface) 85%, #ffffff 6%); }
+.iso-scene .iso-band { fill: var(--iso-a); fill-opacity: 0.22; }
+.iso-scene .iso-tower-led { fill: var(--iso-a); }
+.iso-scene .iso-agent-text { fill: var(--iso-text); font-size: 11px; font-weight: 600; font-family: var(--iso-mono); }
+
+/* beam + UI */
+.iso-scene .iso-beam-line { stroke: var(--iso-a); stroke-opacity: 0.35; stroke-width: 1; stroke-dasharray: 3 5; }
+.iso-scene .iso-screen { --f: #0b1730; --f: color-mix(in srgb, var(--iso-deep) 70%, var(--iso-elev) 30%); }
+.iso-scene .iso-screen .iso-right { fill: #0a1630; fill: color-mix(in srgb, var(--iso-deep) 80%, var(--iso-c) 6%); stroke: var(--iso-c); stroke-opacity: 0.5; }
+.iso-scene .iso-ui.is-on .iso-screen .iso-right { stroke: var(--iso-a); stroke-opacity: 0.7; }
+.iso-scene .iso-screen-bezel { fill: none; stroke: rgba(255, 255, 255, 0.06); }
+.iso-scene .iso-screen-title { fill: var(--iso-text); font-size: 15px; font-weight: 600; }
+.iso-scene .iso-screen-sub { fill: var(--iso-muted); font-size: 11px; }
+.iso-scene .iso-screen-dot { fill: var(--iso-a); }
+.iso-scene .iso-screen-rule { stroke: rgba(255, 255, 255, 0.10); }
+.iso-scene .iso-screen-bar { fill: var(--iso-muted); fill-opacity: 0.35; }
+.iso-scene .iso-screen-trace circle { fill: none; stroke: var(--iso-a); stroke-width: 1.4; }
+.iso-scene .iso-screen-trace line { stroke: var(--iso-a); stroke-width: 1.4; stroke-opacity: 0.6; }
+.iso-scene .iso-chip rect { fill: var(--iso-b); fill-opacity: 0.12; stroke: var(--iso-b); stroke-width: 1.1; }
+.iso-scene .iso-chip-text { fill: var(--iso-b); font-size: 10.5px; font-weight: 600; font-family: var(--iso-mono); }
+.iso-scene .iso-cite-line { stroke: var(--iso-b); stroke-width: 1.2; stroke-dasharray: 1.5 4.5; stroke-linecap: round; stroke-opacity: 0.8; }
+.iso-scene .iso-cite-dot { fill: none; stroke: var(--iso-b); stroke-width: 1.4; }
+
+/* packets */
+.iso-scene .iso-pk-core { fill: #fffbe6; }
+.iso-scene .iso-pk-trail.iso-pk-a { fill: var(--iso-a); }
+.iso-scene .iso-pk-trail.iso-pk-b { fill: var(--iso-b); }
+.iso-scene .iso-pk-trail.iso-pk-c { fill: var(--iso-c); }
+.iso-scene .iso-lanes path { fill: none; stroke: var(--iso-a); stroke-width: 1.1; stroke-dasharray: 2 5; stroke-linecap: round; stroke-opacity: 0.7; }
+.iso-scene .iso-ripple { fill: none; stroke: var(--iso-a); stroke-width: 1.4; }
+.iso-scene .iso-stop-a { stop-color: var(--iso-a); }
+.iso-scene .iso-stop-b { stop-color: var(--iso-b); }
+.iso-scene .iso-stop-c { stop-color: var(--iso-c); }
+
+/* labels */
+.iso-scene .iso-leader { fill: none; stroke: var(--iso-muted); stroke-opacity: 0.55; stroke-width: calc(var(--iso-k, 1) * 1px); }
+.iso-scene .iso-leader-dot { fill: var(--iso-text); }
+.iso-scene .iso-lbl-key { fill: var(--iso-text); font-size: calc(var(--iso-k, 1) * 13px); font-weight: 600; }
+.iso-scene .iso-lbl-sub { fill: var(--iso-muted); font-size: calc(var(--iso-k, 1) * 11.5px); font-weight: 400; }
+
+/* compact (< 560px container): drop minor labels, enlarge key labels */
+.iso-scene.iso-compact .iso-lbl-sub,
+.iso-scene.iso-compact .iso-minor,
+.iso-scene.iso-compact .iso-agent-tag,
+.iso-scene.iso-compact .iso-screen-sub,
+.iso-scene.iso-compact .iso-screen-trace { display: none; }
+.iso-scene.iso-compact .iso-lbl-key { font-size: calc(var(--iso-k, 1) * 11.5px); }
+.iso-scene.iso-compact .iso-floor-text { font-size: 19px; }
+
+/* overview (homepage card): finished architecture, title-only labels ~12px */
+.iso-scene.iso-overview .iso-lbl-sub,
+.iso-scene.iso-overview .iso-minor,
+.iso-scene.iso-overview .iso-agent-tag,
+.iso-scene.iso-overview .iso-screen-sub,
+.iso-scene.iso-overview .iso-screen-trace,
+.iso-scene.iso-overview .iso-floor-text { display: none; }
+.iso-scene.iso-overview .iso-lbl-key { font-size: calc(var(--iso-k, 1) * 12px); font-weight: 600; }
+.iso-scene.iso-overview .iso-leader { stroke-opacity: 0.45; }

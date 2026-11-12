@@ -1,0 +1,184 @@
+/* ============================================================
+   PublicSectorScene — isometric agentic GraphRAG inside an air-gapped,
+   accredited network (pairs with public-sector-scene.js).
+   Colours follow the site theme tokens; hex values are fallbacks for the
+   default "firefly night" palette. Shading matches the scene family: one
+   base colour (--f) per solid -> lit top, mid left, shaded right.
+   ============================================================ */
+.ps {
+  --ps-a: var(--accent, #c6f432);
+  --ps-b: var(--accent-2, #f5c542);
+  --ps-c: var(--accent-3, #7dd3fc);
+  --ps-text: var(--text, #e8eefc);
+  --ps-muted: var(--text-muted, #a9b6d3);
+  --ps-deep: var(--bg-deep, #060e22);
+  --ps-surface: var(--bg-surface, #0f1f3d);
+  --ps-elev: var(--bg-elevated, #13264a);
+  --ps-sans: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  --ps-ease: var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.ps-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  font-family: var(--ps-sans);
+}
+
+/* gradient stops */
+.ps .ps-st-a { stop-color: var(--ps-a); }
+.ps .ps-st-b { stop-color: var(--ps-b); }
+.ps .ps-st-c { stop-color: var(--ps-c); }
+.ps .ps-st-plate0 { stop-color: #0f2042; stop-color: color-mix(in srgb, var(--ps-surface) 90%, #ffffff 5%); }
+.ps .ps-st-plate1 { stop-color: #0b1833; stop-color: color-mix(in srgb, var(--ps-surface) 82%, #000000 18%); }
+
+/* ---------- floor plate ---------- */
+.ps .ps-plate { stroke: rgba(255, 255, 255, 0.10); stroke-width: 1; }
+.ps .ps-plate-side.ps-l { fill: #091530; fill: color-mix(in srgb, var(--ps-surface) 72%, #000 28%); }
+.ps .ps-plate-side.ps-r { fill: #071026; fill: color-mix(in srgb, var(--ps-surface) 58%, #000 42%); }
+.ps .ps-plate-rim { fill: none; stroke: rgba(255, 255, 255, 0.16); stroke-width: 1; }
+.ps .ps-grid { fill: none; stroke: rgba(169, 182, 211, 0.06); stroke-width: 1; }
+
+/* ---------- hardened boundary ---------- */
+.ps .ps-bound-fill { fill: var(--ps-a); fill-opacity: 0.025; }
+.ps .ps-bound-line { fill: none; stroke: var(--ps-a); stroke-linejoin: round; }
+.ps .ps-bound-outer { stroke-opacity: 0.4; stroke-width: 1.2; stroke-dasharray: 3 6; stroke-linecap: round; }
+.ps .ps-bound-inner { stroke-opacity: 0.7; stroke-width: 1.6; stroke-dasharray: 10 6; }
+.ps .ps-bound.is-lit .ps-bound-inner { stroke-opacity: 0.95; }
+.ps .ps-bound.is-lit .ps-bound-outer { stroke-opacity: 0.6; }
+.ps .ps-floortext { fill: var(--ps-a); fill-opacity: 0.6; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
+.ps .ps-lock { opacity: 0; }
+.ps .ps-lock-disc { fill: var(--ps-deep); stroke: var(--ps-a); stroke-opacity: 0.7; stroke-width: 1.2; }
+.ps .ps-lock-shackle { fill: none; stroke: var(--ps-a); stroke-width: 1.6; stroke-linecap: round; }
+.ps .ps-lock-body { fill: var(--ps-a); }
+.ps .ps-lock-hole { fill: var(--ps-deep); }
+
+/* ---------- wires ---------- */
+.ps .ps-wire { fill: none; stroke: rgba(169, 182, 211, 0.2); stroke-width: 1.3; stroke-linejoin: round; }
+.ps .ps-arc { stroke-dasharray: 2 4; stroke: rgba(169, 182, 211, 0.26); }
+.ps .ps-wire-on { fill: none; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; opacity: 0; }
+.ps .ps-w-a { stroke: var(--ps-a); }
+.ps .ps-w-b { stroke: var(--ps-b); }
+.ps .ps-w-c { stroke: var(--ps-c); }
+
+/* blocked egress stub at the boundary */
+.ps .ps-stub { opacity: 0; }
+.ps .ps-stub-line { fill: none; stroke: var(--ps-c); stroke-opacity: 0.85; stroke-width: 1.4; stroke-dasharray: 2 5; stroke-linecap: round; }
+.ps .ps-stub-ring { fill: var(--ps-deep); stroke: var(--ps-text); stroke-opacity: 0.8; stroke-width: 1.4; }
+.ps .ps-stub-bar { stroke: var(--ps-text); stroke-opacity: 0.85; stroke-width: 1.8; stroke-linecap: round; }
+
+/* GitLab CI strip */
+.ps .ps-ci-strip { fill: rgba(0, 0, 0, 0.22); stroke: rgba(255, 255, 255, 0.10); stroke-width: 1; }
+.ps .ps-ci-link { stroke: var(--ps-muted); stroke-opacity: 0.45; stroke-width: 1.2; }
+.ps .ps-ci-dot { fill: var(--ps-a); }
+
+/* ---------- solids ---------- */
+.ps .ps-block { --f: var(--ps-elev); --k: var(--ps-text); }
+.ps .ps-b-graph { --f: #142c50; --f: color-mix(in srgb, var(--ps-elev) 92%, var(--ps-a) 5%); --k: var(--ps-a); }
+.ps .ps-b-layer { --f: #1a3a4a; --f: color-mix(in srgb, var(--ps-elev) 80%, var(--ps-a) 12%); --k: var(--ps-a); }
+.ps .ps-b-table { --f: #1c2d52; --f: color-mix(in srgb, var(--ps-elev) 90%, var(--ps-b) 7%); --k: var(--ps-b); }
+.ps .ps-b-agent { --f: #1d3058; --f: color-mix(in srgb, var(--ps-elev) 88%, #ffffff 7%); --k: var(--ps-b); }
+.ps .ps-b-agent-head { --f: #22375f; --f: color-mix(in srgb, var(--ps-elev) 82%, #ffffff 11%); --k: var(--ps-b); }
+.ps .ps-b-llm { --f: #142f55; --f: color-mix(in srgb, var(--ps-elev) 90%, var(--ps-c) 8%); --k: var(--ps-c); }
+.ps .ps-b-api { --f: #172c54; --f: color-mix(in srgb, var(--ps-elev) 92%, var(--ps-a) 5%); --k: var(--ps-a); }
+.ps .ps-b-container { --f: #1a3560; --f: color-mix(in srgb, var(--ps-elev) 86%, var(--ps-c) 10%); --k: var(--ps-c); }
+.ps .ps-b-desk { --f: #12233f; --f: color-mix(in srgb, var(--ps-surface) 85%, #ffffff 7%); }
+.ps .ps-b-monitor { --f: #1d2f55; --f: color-mix(in srgb, var(--ps-elev) 85%, #ffffff 8%); }
+
+.ps .ps-ao { fill: #000; fill-opacity: 0.3; }
+.ps .ps-face-t,
+.ps .ps-face-l,
+.ps .ps-face-r { stroke: rgba(255, 255, 255, 0.07); stroke-width: 1; stroke-linejoin: round; }
+.ps .ps-face-t { fill: #2a3d63; fill: color-mix(in srgb, var(--f) 80%, #ffffff 20%); stroke: rgba(255, 255, 255, 0.16); }
+.ps .ps-face-l { fill: var(--f); }
+.ps .ps-face-r { fill: #0d1b36; fill: color-mix(in srgb, var(--f) 70%, #000000 30%); }
+.ps .ps-face-shade { pointer-events: none; }
+.ps .ps-tint { fill: var(--k); opacity: 0; transition: opacity 300ms var(--ps-ease); }
+.ps .ps-edge { fill: none; stroke: var(--k); stroke-width: 1.3; stroke-linejoin: round; opacity: 0; transition: opacity 300ms var(--ps-ease); }
+.ps .is-on .ps-edge,
+.ps .ps-block.is-on .ps-edge { opacity: 0.28; }
+.ps .is-lit .ps-edge,
+.ps .ps-block.is-lit .ps-edge { opacity: 0.9; }
+.ps .ps-block.is-lit .ps-tint { opacity: 0.1; }
+.ps .ps-glow { opacity: 0; }
+.ps .ps-veil { fill: #0d1c39; fill: color-mix(in srgb, var(--ps-surface) 92%, #ffffff 3%); pointer-events: none; }
+
+/* graph tower */
+.ps .ps-b-layer .ps-face-t { fill-opacity: 0.82; }
+.ps .ps-post { fill: none; stroke: var(--ps-muted); stroke-opacity: 0.45; stroke-width: 1.4; stroke-linecap: round; }
+.ps .ps-vlink { fill: none; stroke: var(--ps-a); stroke-opacity: 0.55; stroke-width: 1; stroke-dasharray: 2 3; }
+.ps .ps-gedge { fill: none; stroke: var(--ps-a); stroke-opacity: 0.5; stroke-width: 1.2; }
+.ps .ps-gnode-base { fill: rgba(0, 0, 0, 0.35); }
+.ps .ps-gnode { fill: #d6f57a; fill: color-mix(in srgb, var(--ps-a) 72%, #ffffff 28%); stroke: var(--ps-deep); stroke-width: 1; }
+
+/* agent crew + table */
+.ps .ps-visor polygon { fill: var(--ps-b); }
+.ps .ps-badge { fill: var(--ps-b); fill-opacity: 0.35; }
+.ps .ps-neck { stroke: var(--ps-deep); stroke-width: 6; }
+.ps .ps-antenna { stroke: var(--ps-muted); stroke-width: 1.4; stroke-linecap: round; }
+.ps .ps-agent-led { fill: var(--ps-b); }
+.ps .ps-table-ring { fill: none; stroke: var(--ps-b); stroke-opacity: 0.35; stroke-width: 1; stroke-dasharray: 3 4; }
+.ps .ps-plan-edge { fill: none; stroke: var(--ps-b); stroke-opacity: 0.5; stroke-width: 1.4; stroke-linejoin: round; }
+.ps .ps-plan-dot { fill: var(--ps-b); }
+
+/* LLM appliance */
+.ps .ps-rack-lines { stroke: rgba(6, 14, 34, 0.5); stroke-width: 1.2; }
+.ps .ps-seam { stroke: var(--ps-c); stroke-opacity: 0.6; stroke-width: 1; opacity: 0; }
+.ps .ps-seal { fill: var(--ps-c); fill-opacity: 0.07; stroke: var(--ps-c); stroke-opacity: 0.55; stroke-width: 1; stroke-dasharray: 4 3; }
+.ps .ps-seal-lock .ps-lock-shackle { stroke: var(--ps-c); stroke-opacity: 0.8; stroke-width: 0.9; }
+.ps .ps-seal-lock .ps-lock-body { fill: var(--ps-c); fill-opacity: 0.8; }
+.ps .ps-led { fill: var(--ps-a); }
+.ps .ps-led-c { fill: var(--ps-c); }
+
+/* API + users */
+.ps .ps-vent { stroke: rgba(255, 255, 255, 0.13); stroke-width: 1.6; stroke-linecap: round; }
+.ps .ps-port { stroke: var(--ps-deep); stroke-width: 4; stroke-linecap: round; }
+.ps .ps-screen { fill: var(--ps-a); fill-opacity: 0.55; stroke: var(--ps-a); stroke-width: 1; }
+
+/* packets: warm-white core, coloured halo, short trail */
+.ps .ps-pk,
+.ps .ps-pk-trail { opacity: 0; }
+.ps .ps-pk-core { fill: #fffbe6; }
+.ps .ps-pk-trail.ps-pk-a { fill: var(--ps-a); }
+.ps .ps-pk-trail.ps-pk-b { fill: var(--ps-b); }
+.ps .ps-pk-trail.ps-pk-c { fill: var(--ps-c); }
+
+/* ---------- labels (constant on-screen size via --ps-k) ---------- */
+.ps .ps-label { opacity: 0; }
+.ps .ps-leader { fill: none; stroke: var(--ps-muted); stroke-opacity: 0.5; stroke-width: calc(var(--ps-k, 1) * 1px); }
+.ps .ps-leader-dot { fill: var(--ps-text); }
+.ps .ps-title {
+  fill: var(--ps-text);
+  font-size: calc(var(--ps-k, 1) * 13px);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  transition: fill 300ms var(--ps-ease);
+}
+.ps .ps-sub { fill: var(--ps-muted); font-size: calc(var(--ps-k, 1) * 11.5px); }
+.ps .ps-label.is-lit .ps-title { fill: var(--ps-a); }
+.ps .ps-l-agents.is-lit .ps-title { fill: var(--ps-b); }
+.ps .ps-l-llm.is-lit .ps-title { fill: var(--ps-c); }
+.ps .ps-tag,
+.ps .ps-ci-cap { opacity: 0; }
+.ps .ps-tag-pill { fill: var(--ps-deep); stroke: var(--ps-a); stroke-opacity: 0.6; stroke-width: 1; }
+.ps .ps-tag-text { fill: var(--ps-text); font-size: 11.5px; font-weight: 500; }
+.ps .ps-cap-text { fill: var(--ps-muted); font-size: 11.5px; font-weight: 500; }
+.ps .ps-legend { opacity: 0; }
+.ps .ps-legend-text { fill: var(--ps-muted); font-size: 11.5px; }
+
+/* compact (< 560px) and overview: titles only, minor detail dropped */
+.ps.is-compact .ps-minor,
+.ps.is-compact .ps-sub { display: none; }
+.ps.is-compact .ps-title { font-size: calc(var(--ps-k, 1) * 11px); }
+
+/* reduced motion: still frames, instant state changes */
+.ps.is-reduced * { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .ps * { transition: none !important; }
+}
+.ps .ps-ci-text { font-size: 11px; fill: var(--ps-muted); fill-opacity: 0.8; }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Serverless AI document-processing platform — Enzo Bonelli</title>
+  <meta name="description" content="How a fully serverless AWS platform extracts structured data from PDFs and images with Bedrock, with no idle servers and 20–30% lower processing costs." />
+  <link rel="canonical" href="https://enzobonelli.com/projects/serverless-doc-ai/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Enzo Bonelli" />
+  <meta property="og:title" content="Serverless AI document-processing platform" />
+  <meta property="og:description" content="How a fully serverless AWS platform extracts structured data from PDFs and images with Bedrock, with no idle servers and 20–30% lower processing costs." />
+  <meta property="og:url" content="https://enzobonelli.com/projects/serverless-doc-ai/" />
+  <meta property="og:image" content="https://enzobonelli.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a1630" />
+  <script>
+    /* Same rule as the homepage: night is the default; a choice saved for
+       this tab session ('eb-theme' in sessionStorage) wins. */
+    (function () {
+      var t = 'dark';
+      try { localStorage.removeItem('eb-theme'); var s = sessionStorage.getItem('eb-theme'); if (s === 'light' || s === 'dark') t = s; } catch (e) {}
+      document.documentElement.dataset.theme = t;
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', t === 'light' ? '#0a0d14' : '#0a1630');
+    })();
+  </script>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../scenes/serverless-scene.css" />
+  <link rel="stylesheet" href="../project.css" />
+</head>
+<body class="pj" data-scene="ServerlessScene">
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <a class="pj-skip" href="#pj-explain">Skip to the explanation</a>
+
+  <header class="pj-top">
+    <a class="pj-brand" href="../../index.html" aria-label="Enzo Bonelli, home">
+      <span class="pj-brand-mark" aria-hidden="true">EB</span>
+      <span class="pj-brand-name">Enzo Bonelli</span>
+    </a>
+    <a class="pj-all" href="../../index.html#projects">&larr; All projects</a>
+    <nav class="pj-reach" aria-label="Contact">
+      <a href="mailto:enzopbonelli@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/enzobonelli/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main class="pj-main" id="main">
+    <header class="pj-head">
+      <h1 class="pj-title" id="pj-title">Serverless AI document-processing platform</h1>
+      <p class="pj-meta">2025–2026</p>
+    </header>
+
+    <section class="pj-stage" aria-label="Architecture, built step by step">
+      <div class="pj-scene" id="pj-scene"></div>
+    </section>
+
+    <p class="pj-summary">A platform that turns PDFs and images, both structured and unstructured, into structured data on a fully serverless AWS stack. Nothing runs between requests, and the serverless design plus model-utilization tuning cut processing costs 20–30%.</p>
+
+    <div class="pj-explain" id="pj-explain">
+        <ol class="pj-steps">
+          <li class="pj-step" id="pj-step-1" data-name="Upload">
+            <p class="pj-step-label"><span class="pj-step-num">Step 1 of 5</span> <span aria-hidden="true">·</span> Upload</p>
+            <h2 tabindex="-1">A document arrives.</h2>
+            <p>PDFs and images are uploaded through CloudFront and land in S3.</p>
+            <ul class="pj-chips"><li>CloudFront</li><li>S3</li><li>PDFs &amp; images</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-2" data-name="Request">
+            <p class="pj-step-label"><span class="pj-step-num">Step 2 of 5</span> <span aria-hidden="true">·</span> Request</p>
+            <h2 tabindex="-1">Each upload becomes an API request.</h2>
+            <p>API Gateway receives the request and routes it into the processing pipeline. No server sits waiting for it.</p>
+            <ul class="pj-chips"><li>API Gateway</li><li>Serverless</li><li>AWS</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-3" data-name="Compute on demand">
+            <p class="pj-step-label"><span class="pj-step-num">Step 3 of 5</span> <span aria-hidden="true">·</span> Compute on demand</p>
+            <h2 tabindex="-1">Compute starts only when there’s work.</h2>
+            <p>Lambda functions run per request and scale back to zero afterwards, so there are no idle servers to pay for.</p>
+            <ul class="pj-chips"><li>Lambda</li><li>On demand</li><li>No idle servers</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-4" data-name="Extract">
+            <p class="pj-step-label"><span class="pj-step-num">Step 4 of 5</span> <span aria-hidden="true">·</span> Extract</p>
+            <h2 tabindex="-1">A model reads the document.</h2>
+            <p>Bedrock models pull fields from structured forms and meaning from unstructured documents. Tuning how the models are used keeps spend in check.</p>
+            <ul class="pj-chips"><li>Bedrock</li><li>Extraction</li><li>Model tuning</li></ul>
+          </li>
+          <li class="pj-step" id="pj-step-5" data-name="Structured data">
+            <p class="pj-step-label"><span class="pj-step-num">Step 5 of 5</span> <span aria-hidden="true">·</span> Structured data</p>
+            <h2 tabindex="-1">Documents come out as structured data.</h2>
+            <p>The extracted results return as structured data, ready for the systems that need them.</p>
+            <ul class="pj-chips"><li>Structured data</li><li>Lambda</li><li>S3</li></ul>
+          </li>
+          <li class="pj-step pj-complete" id="pj-complete" data-name="The full system">
+            <p class="pj-step-label"><span class="pj-step-num">Complete</span> <span aria-hidden="true">·</span> The full system</p>
+            <h2 tabindex="-1">Pay for the work, not the wait.</h2>
+            <p>A fully serverless path from upload to structured data: CloudFront and S3, API Gateway, Lambda and Bedrock. The serverless design and model-utilization tuning cut processing costs 20–30%.</p>
+            <ul class="pj-chips" aria-label="Full tech stack"><li>AWS</li><li>CloudFront</li><li>S3</li><li>API Gateway</li><li>Lambda</li><li>Bedrock</li><li>Serverless</li><li>Document AI</li></ul>
+            <div class="pj-onward">
+              <a class="btn btn-primary" href="../voice-ai/" aria-label="Next project: Real-time voice agent" title="Real-time voice agent">Next project &rarr;</a>
+              <a class="btn btn-ghost" href="../../index.html#projects">&larr; All projects</a>
+            </div>
+          </li>
+        </ol>
+        <p class="sr-only" id="pj-live" aria-live="polite"></p>
+      </div>
+
+      <nav class="pj-controls" aria-label="Step controls">
+        <button type="button" class="pj-btn pj-back" aria-label="Previous step"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7.4 3.3 2.7 8l4.7 4.7 1.1-1.1-2.9-2.8H14V7.2H5.6l2.9-2.8z"/></svg><span class="pj-btn-text">Back</span></button>
+        <ol class="pj-bar">
+          <li><button type="button" class="pj-seg" data-goto="0" aria-label="Step 1: Upload"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">1</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="1" aria-label="Step 2: Request"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">2</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="2" aria-label="Step 3: Compute on demand"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">3</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="3" aria-label="Step 4: Extract"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">4</span></button></li>
+          <li><button type="button" class="pj-seg" data-goto="4" aria-label="Step 5: Structured data"><span class="pj-seg-track"><i></i></span><span class="pj-seg-num" aria-hidden="true">5</span></button></li>
+        </ol>
+        <button type="button" class="pj-btn pj-play" aria-pressed="false" aria-label="Play"><svg class="pj-ico-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11L13.5 8z"/></svg><svg class="pj-ico-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z"/></svg></button>
+        <button type="button" class="pj-btn pj-next" aria-label="Next step"><span class="pj-btn-text">Next</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.6 3.3 13.3 8l-4.7 4.7-1.1-1.1 2.9-2.8H2V7.2h8.4L7.5 4.4z"/></svg></button>
+        <p class="pj-keys" aria-hidden="true"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>Space</kbd> to move through the steps</p>
+      </nav>
+  </main>
+
+  <script src="../../fireflies.js"></script>
+  <script src="../../scenes/serverless-scene.js" defer></script>
+  <script src="../project.js" defer></script>
+</body>
+</html>

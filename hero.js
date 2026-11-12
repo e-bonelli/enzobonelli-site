@@ -90,12 +90,30 @@
   if (!svg || !layer) return;
 
   const NS = 'http://www.w3.org/2000/svg';
+  // Each link path is sampled once into an evenly spaced (by arc length)
+  // x/y table; frames interpolate from it instead of calling
+  // getPointAtLength. Paths live in viewBox space, so resize and theme
+  // changes don't alter them — the table is rebuilt only if a "d" changes.
+  const SAMPLES = 128;
+  const sample = (l) => {
+    l.len = l.path.getTotalLength();
+    for (let k = 0; k < SAMPLES; k++) {
+      const pt = l.path.getPointAtLength(l.len * k / (SAMPLES - 1));
+      l.pts[k * 2] = pt.x;
+      l.pts[k * 2 + 1] = pt.y;
+    }
+  };
   const links = Array.from(svg.querySelectorAll('.hx-link')).map((path, i) => ({
     path,
-    len: path.getTotalLength(),
+    len: 0,
+    pts: new Float32Array(SAMPLES * 2),
     node: svg.querySelectorAll('.hx-node')[i] || null,
     next: 1600 + i * 260 + Math.random() * 900, // first spawn after draw-in
   }));
+  links.forEach(sample);
+  if ('MutationObserver' in window) {
+    links.forEach(l => new MutationObserver(() => sample(l)).observe(l.path, { attributes: true, attributeFilter: ['d'] }));
+  }
   const pulses = [];
   let raf = 0, last = 0, clock = 0, visible = true;
 
@@ -135,10 +153,12 @@
         continue;
       }
       const e = p.t < 0.5 ? 2 * p.t * p.t : 1 - Math.pow(-2 * p.t + 2, 2) / 2; // easeInOut
-      const d = (p.back ? 1 - e : e) * p.link.len;
-      const pt = p.link.path.getPointAtLength(d);
-      p.c.setAttribute('cx', pt.x.toFixed(1));
-      p.c.setAttribute('cy', pt.y.toFixed(1));
+      const f = (p.back ? 1 - e : e) * (SAMPLES - 1); // fractional table index
+      const k = Math.min(f | 0, SAMPLES - 2), u = f - k, pts = p.link.pts;
+      const x = pts[k * 2] + (pts[k * 2 + 2] - pts[k * 2]) * u;
+      const y = pts[k * 2 + 1] + (pts[k * 2 + 3] - pts[k * 2 + 1]) * u;
+      p.c.setAttribute('cx', x.toFixed(1));
+      p.c.setAttribute('cy', y.toFixed(1));
       const fade = Math.min(1, p.t * 6, (1 - p.t) * 6);
       p.c.setAttribute('opacity', fade.toFixed(2));
     }
